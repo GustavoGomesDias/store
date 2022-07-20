@@ -1,3 +1,4 @@
+/* eslint-disable import/no-mutable-exports */
 import { MongoClient, Db } from 'mongodb';
 
 export interface MongoReturn {

@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import 'reflect-metadata';
 import dotenv from 'dotenv';
 import { ApiRouterDefinition } from '@global/api';
