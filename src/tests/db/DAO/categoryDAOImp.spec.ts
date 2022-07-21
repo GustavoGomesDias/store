@@ -1,4 +1,6 @@
+/* eslint-disable dot-notation */
 import CategoryDAOImp from '@DAOImp/CategoryDAOImp';
+import categoryMock from '@mocks/categoryMock';
 import ICategoryModel from '@models/ICategoryModel';
 
 const makeDAOImp = (): CategoryDAOImp => new CategoryDAOImp();
@@ -11,8 +13,9 @@ describe('Category DAO Implementation tests', () => {
   test('Should call prisma create function with correct values', async () => {
     const dao = makeDAOImp();
 
-    // eslint-disable-next-line dot-notation
-    const spy = jest.spyOn(dao['entity'], 'create').mockImplementationOnce(jest.fn());
+    dao['entity'] = categoryMock.category;
+
+    const spy = jest.spyOn(dao['entity'], 'create');
 
     await dao.add(category);
 

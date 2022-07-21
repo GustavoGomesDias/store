@@ -1,4 +1,6 @@
+/* eslint-disable dot-notation */
 import CategorizesDAOImp from '@DAOImp/CategorizesDAOImp';
+import categorizesMock from '@mocks/categorizesMock';
 import ICategorizesModel from '@models/ICategorizesModel';
 import { Prisma } from '@prisma/client';
 
@@ -12,9 +14,10 @@ describe('Category DAO Implementation tests', () => {
 
   test('Should call prisma create function with correct values', async () => {
     const dao = makeDAOImp();
+    dao['entity'] = categorizesMock.categorizes;
 
     // eslint-disable-next-line dot-notation
-    const spy = jest.spyOn(dao['entity'], 'create').mockImplementationOnce(jest.fn());
+    const spy = jest.spyOn(dao['entity'], 'create');
 
     await dao.add(categorizes);
 
@@ -28,8 +31,9 @@ describe('Category DAO Implementation tests', () => {
   test('Should call prisma findUnique function with correct values', async () => {
     const dao = makeDAOImp();
 
-    // eslint-disable-next-line dot-notation
-    const spy = jest.spyOn(dao['entity'], 'findUnique').mockImplementationOnce(jest.fn());
+    dao['entity'] = categorizesMock.categorizes;
+
+    const spy = jest.spyOn(dao['entity'], 'findUnique');
 
     await dao.findById(1);
 
@@ -42,9 +46,8 @@ describe('Category DAO Implementation tests', () => {
 
   test('Should call prisma update function with correct values', async () => {
     const dao = makeDAOImp();
-
-    // eslint-disable-next-line dot-notation
-    const spy = jest.spyOn(dao['entity'], 'update').mockImplementationOnce(jest.fn());
+    dao['entity'] = categorizesMock.categorizes;
+    const spy = jest.spyOn(dao['entity'], 'update');
 
     const data: Prisma.categorizesUpdateArgs = {
       where: {
@@ -62,8 +65,9 @@ describe('Category DAO Implementation tests', () => {
   test('Should call prisma delete function with correct values', async () => {
     const dao = makeDAOImp();
 
-    // eslint-disable-next-line dot-notation
-    const spy = jest.spyOn(dao['entity'], 'delete').mockImplementationOnce(jest.fn());
+    dao['entity'] = categorizesMock.categorizes;
+
+    const spy = jest.spyOn(dao['entity'], 'delete');
 
     const data = {
       where: {
