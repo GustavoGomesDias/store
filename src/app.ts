@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import { IApiRouterDefinition } from '@global/IApi';
 import express, { Express, Router } from 'express';
 import cors from 'cors';
-import controllers from './controllers';
+import controllers from './api/controllers';
 
 dotenv.config();
 
