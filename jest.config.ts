@@ -35,15 +35,22 @@ export default {
     '!**/controllers/Api.ts',
     '!**/index.ts',
     '!**/server.ts',
+    '!**/MongoConnection.ts',
+    '!**/mocks/**',
+    '!**/global/**',
   ],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
-  // coveragePathIgnorePatterns: [
-  //   "/node_modules/"
-  // ],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/prisma/',
+    '/.vscode/',
+    'src/*/I[Az]*.ts',
+    '/mongodb/',
+  ],
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: 'v8',
@@ -105,11 +112,13 @@ export default {
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
     '@global/(.*)': '<rootDir>/src/global/$1',
+    '@db/(.*)': '<rootDir>/src/db/$1',
     '@DAO/(.*)': '<rootDir>/src/db/DAO/generic/$1',
     '@DAOImp/(.*)': '<rootDir>/src/db/DAO/imp/$1',
     '@models/(.*)': '<rootDir>/src/db/models/$1',
     '@data/(.*)': '<rootDir>/src/services/data/$1',
     '@infra/(.*)': '<rootDir>/src/db/infra/$1',
+    '@mocks/(.*)': '<rootDir>/src/tests/mocks/$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

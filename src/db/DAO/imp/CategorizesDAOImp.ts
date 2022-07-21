@@ -1,10 +1,10 @@
 import GenericDAOImp from '@DAO/prisma/PrismaGenericDAOImp';
+import { AddCategorizes } from '@db/usecases/categorizes';
 import prisma from '@infra/PrismaConnection';
-import CategorizesModel from '@models/CategorizesModel';
 import { Prisma } from '@prisma/client';
 
-export default class CategoryDAOImp extends GenericDAOImp<
-  CategorizesModel,
+export default class CategorizesDAOImp extends GenericDAOImp<
+  AddCategorizes,
   Prisma.categorizesFindUniqueArgs,
   Prisma.categorizesUpdateArgs,
   Prisma.categorizesDeleteArgs

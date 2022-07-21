@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 import 'reflect-metadata';
 import dotenv from 'dotenv';
-import { ApiRouterDefinition } from '@global/api';
+import { IApiRouterDefinition } from '@global/IApi';
 import express, { Express, Router } from 'express';
 import cors from 'cors';
 import controllers from './controllers';
@@ -37,7 +37,7 @@ class App {
     controllers.forEach((Controller) => {
       const router = Router();
       const instance = new Controller() as any;
-      const routes: ApiRouterDefinition[] = Reflect.getMetadata('routes', Controller);
+      const routes: IApiRouterDefinition[] = Reflect.getMetadata('routes', Controller);
       const prefix: string = Reflect.getMetadata('prefix', Controller);
 
       for (const route of routes) {

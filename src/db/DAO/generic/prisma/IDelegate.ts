@@ -1,4 +1,4 @@
-export interface Delegate {
+export interface IDelegate {
   aggregate(data: unknown): Promise<unknown>;
   count(data: unknown): Promise<unknown>;
   create(data: unknown): Promise<unknown>;

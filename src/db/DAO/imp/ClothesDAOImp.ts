@@ -1,10 +1,10 @@
 import GenericDAOImp from '@DAO/prisma/PrismaGenericDAOImp';
 import prisma from '@infra/PrismaConnection';
-import ClothesModel from '@models/ClothesModel';
 import { Prisma } from '@prisma/client';
+import { AddClothes } from '@db/usecases/clothes';
 
 export default class ClothesDAOImp extends GenericDAOImp<
-  ClothesModel,
+  AddClothes,
   Prisma.clothesFindUniqueArgs,
   Prisma.clothesUpdateArgs,
   Prisma.clothesDeleteArgs

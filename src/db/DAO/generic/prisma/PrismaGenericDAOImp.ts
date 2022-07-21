@@ -1,11 +1,21 @@
-import GenericDAO from './GenericDAO';
-import { Delegate } from './Delegate';
+import GenericDAO from './IGenericDAO';
+import { IDelegate } from './IDelegate';
 
 export default abstract class GenericDAOImp<C, R, U, D> implements GenericDAO<C, R, U, D> {
-  protected readonly entity: Delegate;
+  protected readonly entity: IDelegate;
 
-  constructor(entity: Delegate) {
+  constructor(entity: IDelegate) {
     this.entity = entity;
+  }
+
+  async findById(id: number): Promise<unknown> {
+    const result = await this.entity.findUnique({
+      where: {
+        id,
+      },
+    } as unknown as R);
+
+    return result;
   }
 
   async add(data: C): Promise<unknown> {

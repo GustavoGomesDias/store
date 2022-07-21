@@ -1,10 +1,10 @@
 import GenericDAOImp from '@DAO/prisma/PrismaGenericDAOImp';
 import prisma from '@infra/PrismaConnection';
-import UserModel from '@models/UserModel';
+import IUserModel from '@models/IUserModel';
 import { Prisma } from '@prisma/client';
 
 export default class UserDAOImp extends GenericDAOImp<
-  UserModel,
+  IUserModel,
   Prisma.userFindManyArgs,
   Prisma.userUpdateArgs,
   Prisma.userDeleteArgs

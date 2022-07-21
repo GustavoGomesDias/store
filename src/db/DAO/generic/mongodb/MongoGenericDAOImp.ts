@@ -1,7 +1,7 @@
 import { Collection, ObjectId } from 'mongodb';
-import GenericDAO from './GenericDAO';
+import IGenericDAO from './IGenericDAO';
 
-export default class MongoGenericDAOImp<Model> implements GenericDAO<Model> {
+export default class MongoGenericDAOImp<Model> implements IGenericDAO<Model> {
   private readonly collection: Collection;
 
   constructor(collection: Collection) {

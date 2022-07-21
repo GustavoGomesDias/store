@@ -30,11 +30,13 @@
     "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     "paths": {
       "@global/*": ["src/global/*"],
+      "@db/*": ["src/db/*"],
       "@DAO/*": ["src/db/DAO/generic/*"],
       "@DAOImp/*": ["src/db/DAO/imp/*"],
       "@models/*": ["src/db/models/*"],
       "@data/*": ["src/services/data/*"],
       "@infra/*": ["src/db/infra/*"],
+      "@mocks/*": ["src/tests/mocks/*"],
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like `./node_modules/@types`. */
