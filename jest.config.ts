@@ -36,6 +36,7 @@ export default {
     '!**/index.ts',
     '!**/server.ts',
     '!**/MongoConnection.ts',
+    '!**/IUserDAO.ts',
     '!**/mocks/**',
     '!**/global/**',
   ],
@@ -119,6 +120,7 @@ export default {
     '@data/(.*)': '<rootDir>/src/services/data/$1',
     '@infra/(.*)': '<rootDir>/src/db/infra/$1',
     '@mocks/(.*)': '<rootDir>/src/tests/mocks/$1',
+    '@adapters/(.*)': '<rootDir>/src/adapters/$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
