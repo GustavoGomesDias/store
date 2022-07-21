@@ -1,10 +1,7 @@
-import CategoryModel from './CategoryModel';
-
 /* eslint-disable semi */
 export default interface ClothesModel {
-  id: string | number
+  id: number
+  name: string
   value: number
   quantity: number
-  name: number
-  category: CategoryModel[]
 }

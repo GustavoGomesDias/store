@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/GustavoGomesDias/store#readme",
   "dependencies": {
+    "@prisma/client": "^4.1.0",
     "@types/mongodb": "^4.0.7",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
@@ -39,6 +40,7 @@
     "eslint-plugin-import": "^2.26.0",
     "jest": "^28.1.3",
     "nodemon": "^2.0.19",
+    "prisma": "^4.1.0",
     "supertest": "^6.2.4",
     "ts-jest": "^28.0.7",
     "ts-node": "^10.9.1",

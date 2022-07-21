@@ -1,5 +1,5 @@
-import GenericDAO from '@DAO/GenericDAO';
 import { Collection, ObjectId } from 'mongodb';
+import GenericDAO from './GenericDAO';
 
 export default class MongoGenericDAOImp<Model> implements GenericDAO<Model> {
   private readonly collection: Collection;
