@@ -2,10 +2,13 @@ import Encrypt from '@adapters/services/Encrypt';
 import GenericDAOImp from '@DAO/prisma/PrismaGenericDAOImp';
 import IUserModel from '@db/models/IUserModel';
 import { AddUser, GetUserWithOutPass } from '@db/usecases/user';
+import { DependencyError } from '@err/DependencyError';
 import prisma from '@infra/PrismaConnection';
+import { Inject } from '@inject/Inject';
 import { Prisma } from '@prisma/client';
 import IUserDAO from './IUserDAO';
 
+@Inject(['Encrypter'])
 export default class UserDAOImp extends GenericDAOImp<
   AddUser,
   Prisma.userFindManyArgs,
@@ -19,8 +22,11 @@ AddUser,
 > {
   private readonly encrypter: Encrypt;
 
-  constructor(encrypter: Encrypt) {
+  constructor(encrypter?: Encrypt) {
     super(prisma.user);
+    if (!encrypter) {
+      throw new DependencyError('Not possible injecting: Encrypter');
+    }
     this.encrypter = encrypter;
   }
 

@@ -9,6 +9,7 @@ import { Inject } from '@inject/index';
 import GenericDAO from '@DAO/prisma/IGenericDAO';
 import { DependencyError } from '@err/DependencyError';
 import Controller from './Controller';
+import Catch from '../decorators/handlers/errors/Catch';
 
 @Route('/clothes')
 @Inject(['ClothesDAOImp'])
@@ -20,6 +21,7 @@ export default class ClothesController extends Controller<AddClothes, Partial<Cl
     super(enitityDAO);
   }
 
+  @Catch()
   @Post('/')
   async create(req: IRequest<AddClothes>): Promise<IResponse> {
     await this.enitityDAO.add(req.body);
@@ -32,6 +34,7 @@ export default class ClothesController extends Controller<AddClothes, Partial<Cl
     };
   }
 
+  @Catch()
   @Put('/')
   async update(req: IRequest<Partial<ClothesModel>>): Promise<IResponse> {
     await this.enitityDAO.update(req.body);
@@ -44,6 +47,7 @@ export default class ClothesController extends Controller<AddClothes, Partial<Cl
     };
   }
 
+  @Catch()
   @Delete('/')
   async delete(req: IRequest): Promise<IResponse> {
     const id = Number(req.params.id);
@@ -57,6 +61,7 @@ export default class ClothesController extends Controller<AddClothes, Partial<Cl
     };
   }
 
+  @Catch()
   @Get('/:id')
   async findById(req: IRequest): Promise<IResponse> {
     const id = Number(req.params.id);
@@ -70,6 +75,7 @@ export default class ClothesController extends Controller<AddClothes, Partial<Cl
     };
   }
 
+  @Catch()
   @Get('/page/:page')
   async pagination(req: IRequest): Promise<IResponse> {
     const page = Number(req.params.page);
