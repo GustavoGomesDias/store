@@ -1,15 +1,14 @@
 import ClothesModel from '@db/models/IClothesModel';
 import { AddClothes } from '@db/usecases/clothes';
-import { IResponse } from '@http/IReponse';
-import { IRequest } from '@http/IRequest';
+import { IResponse, IRequest } from '@http/index';
 import {
   Route, Delete, Get, Post, Put,
 } from '@api/index';
 import { Inject } from '@inject/index';
 import GenericDAO from '@DAO/prisma/IGenericDAO';
 import { DependencyError } from '@err/DependencyError';
+import Catch from '@handleError/Catch';
 import Controller from './Controller';
-import Catch from '../decorators/handlers/errors/Catch';
 
 @Route('/clothes')
 @Inject(['ClothesDAOImp'])

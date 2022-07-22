@@ -42,6 +42,7 @@
       "@err/*": ["src/helpers/errors/*"],
       "@http/*": ["src/helpers/http/*"],
       "@api/*": ["src/api/decorators/handlers/routes/*"],
+      "@handleError/*": ["src/api/decorators/handlers/errors/*"],
       "@inject/*": ["src/dependency-control/decorators/*"],
       "@DI/*": ["src/dependency-control/*"],
       "@controllers/*": ["src/api/controllers/*"]
