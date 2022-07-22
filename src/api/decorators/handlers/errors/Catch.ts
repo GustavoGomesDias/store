@@ -1,5 +1,5 @@
 import { Response } from 'express';
-import handleErrors from '@err/handleErrors';
+import { handleErrors } from '@err/handleErrors';
 
 const Catch = () => (target: any, key: string, descriptor: PropertyDescriptor) => {
   const originalMethod = descriptor.value;

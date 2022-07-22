@@ -1,9 +1,10 @@
 /* eslint-disable no-restricted-syntax */
 import 'reflect-metadata';
 import dotenv from 'dotenv';
-import { IApiRouterDefinition } from '@global/IApi';
-import express, { Express, Router } from 'express';
 import cors from 'cors';
+import express, { Express, Router } from 'express';
+import { IApiRouterDefinition } from '@global/IApi';
+import { IResponse } from '@http/IReponse';
 import controllers from './api/controllers';
 
 dotenv.config();
@@ -42,7 +43,10 @@ class App {
 
       for (const route of routes) {
         // eslint-disable-next-line no-return-await
-        router[route.method](`${route.path}`, async (req, res) => await instance[String(route.controllerMethod)](req, res)).bind(instance);
+        router[route.method](`${route.path}`, async (req, res) => {
+          const response = await instance[String(route.controllerMethod)](req) as IResponse;
+          return res.status(response.statusCode).json({ body: response.body });
+        }).bind(instance);
       }
       this.app.use(prefix, router);
     });

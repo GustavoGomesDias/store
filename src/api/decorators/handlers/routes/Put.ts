@@ -2,7 +2,7 @@
 
 import { IApiRouterDefinition } from '@global/IApi';
 
-const Put = (path: string) => (target: any, key: string, descriptor: PropertyDescriptor): void => {
+export const Put = (path: string) => (target: any, key: string, descriptor: PropertyDescriptor): void => {
   if (!Reflect.hasMetadata('routes', target.constructor)) {
     Reflect.defineMetadata('routes', [], target.constructor);
   }
@@ -14,5 +14,3 @@ const Put = (path: string) => (target: any, key: string, descriptor: PropertyDes
   });
   Reflect.defineMetadata('routes', routes, target.constructor);
 };
-
-export default Put;

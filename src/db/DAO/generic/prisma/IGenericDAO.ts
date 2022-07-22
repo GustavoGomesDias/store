@@ -6,4 +6,5 @@ export default interface GenericDAO<C, R, U, D> {
   findById(id: number): Promise<unknown>
   update(data: U): Promise<unknown>
   delete(id: D): Promise<void>
+  pagination(page: number): Promise<unknown>
 };

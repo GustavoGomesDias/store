@@ -1,11 +1,11 @@
-import BadRequestErr from './BadRequestError';
+import { BadRequestErr } from './BadRequestError';
 
 export interface HttpError {
   error: string
   statusCode: number
 }
 
-const handleErrors = (err: Error): HttpError => {
+export const handleErrors = (err: Error): HttpError => {
   if (err instanceof BadRequestErr) {
     return {
       error: err.message,
@@ -18,5 +18,3 @@ const handleErrors = (err: Error): HttpError => {
     statusCode: 500,
   };
 };
-
-export default handleErrors;

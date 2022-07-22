@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { IApiRouterDefinition } from '@global/IApi';
 
-const Get = (path: string) => (target: any, key: string, descriptor: PropertyDescriptor): void => {
+export const Get = (path: string) => (target: any, key: string, descriptor: PropertyDescriptor): void => {
   if (!Reflect.hasMetadata('routes', target.constructor)) {
     Reflect.defineMetadata('routes', [], target.constructor);
   }
@@ -13,5 +13,3 @@ const Get = (path: string) => (target: any, key: string, descriptor: PropertyDes
   });
   Reflect.defineMetadata('routes', routes, target.constructor);
 };
-
-export default Get;

@@ -1,7 +1,7 @@
 import CategoryDAOImp from './CategoryDAOImp';
 import CategorizesDAOImp from './CategorizesDAOImp';
-import ClothesDAOImp from './ClothesDAOImp';
 import UserDAOImp from './user/UserDAOImp';
+import ClothesDAOImp from './ClothesDAOImp';
 
 export default {
   CategoryDAOImp,

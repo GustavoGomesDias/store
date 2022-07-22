@@ -40,6 +40,11 @@
       "@adapters/*": ["src/adapters/*"],
       "@services/*": ["src/services/*"],
       "@err/*": ["src/helpers/errors/*"],
+      "@http/*": ["src/helpers/http/*"],
+      "@api/*": ["src/api/decorators/handlers/routes/*"],
+      "@inject/*": ["src/dependency-control/decorators/*"],
+      "@DI/*": ["src/dependency-control/*"],
+      "@controllers/*": ["src/api/controllers/*"]
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like `./node_modules/@types`. */

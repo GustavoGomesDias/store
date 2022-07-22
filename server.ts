@@ -1,3 +1,4 @@
+import { dependencyFactory } from '@DI/dependencyFactory';
 import app from './src/app';
 
 const server = app;

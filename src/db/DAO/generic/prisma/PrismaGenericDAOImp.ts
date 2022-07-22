@@ -8,6 +8,15 @@ export default abstract class GenericDAOImp<C, R, U, D> implements GenericDAO<C,
     this.entity = entity;
   }
 
+  async pagination(page: number): Promise<unknown> {
+    const result = await this.entity.findMany({
+      take: 6,
+      skip: (6 * page),
+    } as unknown as R);
+
+    return result;
+  }
+
   async findById(id: number): Promise<unknown> {
     const result = await this.entity.findUnique({
       where: {
