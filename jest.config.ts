@@ -122,6 +122,7 @@ export default {
     '@mocks/(.*)': '<rootDir>/src/tests/mocks/$1',
     '@adapters/(.*)': '<rootDir>/src/adapters/$1',
     '@services/(.*)': '<rootDir>/src/services/$1',
+    '@err/(.*)': '<rootDir>/src/helpers/errors/$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
