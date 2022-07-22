@@ -2,15 +2,14 @@
 import UserDAOImp from '@DAOImp/user/UserDAOImp';
 import prismaMock from '@mocks/DAO/prismaMock';
 import IUserModel from '@models/IUserModel';
-import factory from '@mocks/DI/factory';
+import * as factory from '@mocks/DI/factory';
+import { DependencyError } from '@err/DependencyError';
 
 const makeDAOImp = (): UserDAOImp => new UserDAOImp();
 
-describe('User DAO Implementation tests', () => {
-  beforeAll(() => {
-    factory();
-  });
+factory.default();
 
+describe('User DAO Implementation tests', () => {
   const user: Omit<IUserModel, 'id'> = {
     name: 'Test',
     email: 'email@email.com',
@@ -117,5 +116,14 @@ describe('User DAO Implementation tests', () => {
     await dao.delete(data);
 
     expect(spy).toHaveBeenCalledWith(data);
+  });
+
+  test('Should throw Dependency Injection error if encrypter dependency is not configurable', async () => {
+    try {
+      jest.spyOn(factory, 'default').mockImplementation(jest.fn());
+      makeDAOImp();
+    } catch (err) {
+      expect((err as Error).message).toEqual('Not possible injecting: Encrypter');
+    }
   });
 });

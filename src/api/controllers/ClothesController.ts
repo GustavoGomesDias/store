@@ -14,10 +14,7 @@ import Controller from './Controller';
 @Inject(['ClothesDAOImp'])
 export default class ClothesController extends Controller<AddClothes, Partial<ClothesModel>> {
   constructor(enitityDAO?: GenericDAO<unknown, unknown, unknown, unknown>) {
-    if (!enitityDAO) {
-      throw new DependencyError('Not possible injecting: ClothesDAOImp');
-    }
-    super(enitityDAO);
+    super(enitityDAO as GenericDAO<unknown, unknown, unknown, unknown>);
   }
 
   @Catch()

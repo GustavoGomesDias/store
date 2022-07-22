@@ -5,6 +5,10 @@ export default class Container {
     Container.injectionRecord.set(key, instance);
   }
 
+  static hashProperty(key: string) {
+    return Container.injectionRecord.has(key);
+  }
+
   static get(key: string) {
     return Container.injectionRecord.get(key);
   }

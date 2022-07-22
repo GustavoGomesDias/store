@@ -24,10 +24,7 @@ AddUser,
 
   constructor(encrypter?: Encrypt) {
     super(prisma.user);
-    if (!encrypter) {
-      throw new DependencyError('Not possible injecting: Encrypter');
-    }
-    this.encrypter = encrypter;
+    this.encrypter = encrypter as Encrypt;
   }
 
   async findByEmail(email: string): Promise<GetUserWithOutPass> {
