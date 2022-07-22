@@ -1,6 +1,6 @@
 /* eslint-disable dot-notation */
 import CategoryDAOImp from '@DAOImp/CategoryDAOImp';
-import categoryMock from '@mocks/categoryMock';
+import categoryMock from '@mocks/DAO/categoryMock';
 import ICategoryModel from '@models/ICategoryModel';
 
 const makeDAOImp = (): CategoryDAOImp => new CategoryDAOImp();

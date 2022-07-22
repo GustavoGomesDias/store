@@ -1,6 +1,6 @@
 /* eslint-disable dot-notation */
 import CategorizesDAOImp from '@DAOImp/CategorizesDAOImp';
-import categorizesMock from '@mocks/categorizesMock';
+import categorizesMock from '@mocks/DAO/categorizesMock';
 import ICategorizesModel from '@models/ICategorizesModel';
 import { Prisma } from '@prisma/client';
 

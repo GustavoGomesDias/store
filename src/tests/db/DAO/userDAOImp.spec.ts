@@ -1,16 +1,16 @@
 /* eslint-disable dot-notation */
 import UserDAOImp from '@DAOImp/user/UserDAOImp';
-import makeEncrypter from '@mocks/encrypt';
-import prismaMock from '@mocks/prismaMock';
+import prismaMock from '@mocks/DAO/prismaMock';
 import IUserModel from '@models/IUserModel';
+import factory from '@mocks/DI/factory';
 
-const makeDAOImp = (): UserDAOImp => {
-  const encrypt = makeEncrypter();
-
-  return new UserDAOImp(encrypt);
-};
+const makeDAOImp = (): UserDAOImp => new UserDAOImp();
 
 describe('User DAO Implementation tests', () => {
+  beforeAll(() => {
+    factory();
+  });
+
   const user: Omit<IUserModel, 'id'> = {
     name: 'Test',
     email: 'email@email.com',

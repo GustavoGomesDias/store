@@ -4,7 +4,7 @@ import IUserModel from '@db/models/IUserModel';
 import { AddUser, GetUserWithOutPass } from '@db/usecases/user';
 import { DependencyError } from '@err/DependencyError';
 import prisma from '@infra/PrismaConnection';
-import { Inject } from '@inject/Inject';
+import { Inject } from '@inject/index';
 import { Prisma } from '@prisma/client';
 import IUserDAO from './IUserDAO';
 

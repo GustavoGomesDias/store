@@ -123,6 +123,12 @@ export default {
     '@adapters/(.*)': '<rootDir>/src/adapters/$1',
     '@services/(.*)': '<rootDir>/src/services/$1',
     '@err/(.*)': '<rootDir>/src/helpers/errors/$1',
+    '@http/(.*)': '<rootDir>/src/helpers/http/$1',
+    '@api/(.*)': '<rootDir>/src/api/decorators/handlers/routes/$1',
+    '@handleError/(.*)': '<rootDir>/src/api/decorators/handlers/errors/$1',
+    '@inject/(.*)': '<rootDir>/src/dependency-control/decorators/$1',
+    '@DI/(.*)': '<rootDir>/src/dependency-control/$1',
+    '@controllers/(.*)': '<rootDir>/src/api/controllers/$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
