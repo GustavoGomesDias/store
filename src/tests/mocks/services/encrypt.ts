@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Encrypt from '@adapters/services/Encrypt';
 
-const makeEncrypter = (): Encrypt => {
+const makeEncrypterStub = (): Encrypt => {
   class EncrypterStub implements Encrypt {
     async encrypt(password: string): Promise<string> {
       const hash = await Promise.resolve('hash');
@@ -17,4 +17,4 @@ const makeEncrypter = (): Encrypt => {
   return new EncrypterStub();
 };
 
-export default makeEncrypter;
+export default makeEncrypterStub;

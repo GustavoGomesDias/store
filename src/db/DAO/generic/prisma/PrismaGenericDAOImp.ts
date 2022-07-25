@@ -1,7 +1,9 @@
 import GenericDAO from './IGenericDAO';
 import { IDelegate } from './IDelegate';
 
-export default abstract class GenericDAOImp<C, R, U, D> implements GenericDAO<C, R, U, D> {
+export default abstract class GenericDAOImp<
+  C = unknown, R = unknown, U = unknown, D = unknown
+  > implements GenericDAO<C, R, U, D> {
   protected entity: IDelegate;
 
   constructor(entity: IDelegate) {

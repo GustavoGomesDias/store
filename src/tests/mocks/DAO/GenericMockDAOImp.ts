@@ -10,7 +10,7 @@ jest.mock('@DAO/generic/prisma/PrismaGenericDAOImp', () => ({
   delete: jest.fn(),
 }));
 
-const prismaMock = GenericDAOImp as unknown as DeepMockProxy<GenericDAOImp<unknown, unknown, unknown, unknown>>;
+const prismaMock = GenericDAOImp as unknown as DeepMockProxy<GenericDAOImp>;
 beforeEach(() => {
   mockReset(prismaMock);
 });
