@@ -4,4 +4,7 @@ export interface IRequest<UseCase = void> {
   body?: UseCase
   params?: any
   query?: any
+  headers: {
+    authorization?: string
+  }
 }

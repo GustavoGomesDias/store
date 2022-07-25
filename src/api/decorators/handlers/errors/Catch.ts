@@ -1,5 +1,5 @@
-import { Response } from 'express';
 import { handleErrors } from '@err/handleErrors';
+import { IResponse } from '@http/IReponse';
 
 const Catch = () => (target: any, key: string, descriptor: PropertyDescriptor) => {
   const originalMethod = descriptor.value;
@@ -11,7 +11,12 @@ const Catch = () => (target: any, key: string, descriptor: PropertyDescriptor) =
       console.log(err);
       const { error, statusCode } = handleErrors(err as Error);
 
-      return (args[1] as Response).status(statusCode).json({ error });
+      return {
+        statusCode,
+        body: {
+          error,
+        },
+      } as IResponse;
     }
   };
 

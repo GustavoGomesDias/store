@@ -2,7 +2,7 @@ import ClothesModel from '@db/models/IClothesModel';
 import { AddClothes } from '@db/usecases/clothes';
 import { IResponse, IRequest } from '@http/index';
 import {
-  Route, Delete, Get, Post, Put,
+  Route, Delete, Get, Post, Put, AuthRequired,
 } from '@api/index';
 import { Inject } from '@inject/index';
 import GenericDAO from '@DAO/prisma/IGenericDAO';
@@ -12,11 +12,12 @@ import Controller from './Controller';
 @Route('/clothes')
 @Inject(['ClothesDAOImp'])
 export default class ClothesController extends Controller<AddClothes, Partial<ClothesModel>> {
-  constructor(enitityDAO?: GenericDAO<unknown, unknown, unknown, unknown>) {
-    super(enitityDAO as GenericDAO<unknown, unknown, unknown, unknown>);
+  constructor(enitityDAO?: GenericDAO) {
+    super(enitityDAO as GenericDAO);
   }
 
   @Catch()
+  @AuthRequired()
   @Post('/')
   async create(req: IRequest<AddClothes>): Promise<IResponse> {
     await this.enitityDAO.add(req.body);
@@ -30,6 +31,7 @@ export default class ClothesController extends Controller<AddClothes, Partial<Cl
   }
 
   @Catch()
+  @AuthRequired()
   @Put('/')
   async update(req: IRequest<Partial<ClothesModel>>): Promise<IResponse> {
     await this.enitityDAO.update(req.body);
@@ -43,6 +45,7 @@ export default class ClothesController extends Controller<AddClothes, Partial<Cl
   }
 
   @Catch()
+  @AuthRequired()
   @Delete('/')
   async delete(req: IRequest): Promise<IResponse> {
     const id = Number(req.params.id);

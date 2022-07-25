@@ -2,9 +2,9 @@ import GenericDAO from '@db/DAO/generic/prisma/IGenericDAO';
 import { IResponse, IRequest } from '@http/index';
 
 export default abstract class Controller<CreateUseCase, UpdateUseCase> {
-  protected enitityDAO: GenericDAO<unknown, unknown, unknown, unknown>;
+  protected enitityDAO: GenericDAO;
 
-  constructor(enitityDAO: GenericDAO<unknown, unknown, unknown, unknown>) {
+  constructor(enitityDAO: GenericDAO) {
     this.enitityDAO = enitityDAO;
   }
 
