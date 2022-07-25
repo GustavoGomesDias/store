@@ -4,9 +4,10 @@ import prismaMock from '@mocks/DAO/prismaMock';
 import IUserModel from '@models/IUserModel';
 import * as factory from '@mocks/DI/factory';
 
-const makeDAOImp = (): UserDAOImp => new UserDAOImp();
-
-factory.default();
+const makeDAOImp = (): UserDAOImp => {
+  factory.default();
+  return new UserDAOImp();
+};
 
 describe('User DAO Implementation tests', () => {
   const user: Omit<IUserModel, 'id'> = {
