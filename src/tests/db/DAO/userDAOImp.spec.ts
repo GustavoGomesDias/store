@@ -3,7 +3,6 @@ import UserDAOImp from '@DAOImp/user/UserDAOImp';
 import prismaMock from '@mocks/DAO/prismaMock';
 import IUserModel from '@models/IUserModel';
 import * as factory from '@mocks/DI/factory';
-import { DependencyError } from '@err/DependencyError';
 
 const makeDAOImp = (): UserDAOImp => new UserDAOImp();
 
@@ -118,7 +117,7 @@ describe('User DAO Implementation tests', () => {
     expect(spy).toHaveBeenCalledWith(data);
   });
 
-  test('Should throw Dependency Injection error if encrypter dependency is not configurable', async () => {
+  test('Should throw Dependency Injection error if encrypter dependency is not configurable', () => {
     try {
       jest.spyOn(factory, 'default').mockImplementation(jest.fn());
       makeDAOImp();

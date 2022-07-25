@@ -6,7 +6,6 @@ import {
 } from '@api/index';
 import { Inject } from '@inject/index';
 import GenericDAO from '@DAO/prisma/IGenericDAO';
-import { DependencyError } from '@err/DependencyError';
 import Catch from '@handleError/Catch';
 import Controller from './Controller';
 
