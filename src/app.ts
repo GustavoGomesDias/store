@@ -5,7 +5,7 @@ import cors from 'cors';
 import express, { Express, Router } from 'express';
 import { IApiRouterDefinition } from '@global/IApi';
 import { IResponse } from '@http/IReponse';
-import { MakeInjection } from '@inject/MakeInjection';
+import { MakeDependencies } from '@inject/index';
 import controllers from './api/controllers';
 
 dotenv.config();
@@ -24,7 +24,7 @@ const options: cors.CorsOptions = {
   preflightContinue: false,
 };
 
-@MakeInjection()
+@MakeDependencies()
 class App {
   public app: Express;
 

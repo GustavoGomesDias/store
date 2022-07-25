@@ -39,6 +39,7 @@ export default {
     '!**/IUserDAO.ts',
     '!**/mocks/**',
     '!**/global/**',
+    '!**/http/**',
   ],
 
   // The directory where Jest should output its coverage files

@@ -1,2 +1,2 @@
 export * from './Inject';
-export * from './MakeInjection';
+export * from './MakeDependencies';
