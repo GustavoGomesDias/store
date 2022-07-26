@@ -132,6 +132,7 @@ export default {
     '@controllers/(.*)': '<rootDir>/src/api/controllers/$1',
     '@helpers/(.*)': '<rootDir>/src/helpers/$1',
     '@validaions/(.*)': '<rootDir>/src/api/decorators/validations/$1',
+    '@dtos/(.*)': '<rootDir>/src/api/dtos/$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
