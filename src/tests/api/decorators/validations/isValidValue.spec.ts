@@ -12,7 +12,7 @@ describe('@validations - Validate value', () => {
     }
   }
 
-  test('Should return bad request error if property size is less than a defined value', () => {
+  test('Should return bad request error if property size is less than 0', () => {
     // const spy = jest.spyOn(validations, 'Min');
 
     // eslint-disable-next-line no-new
@@ -27,7 +27,7 @@ describe('@validations - Validate value', () => {
     expect(makeStub).toThrow(BadRequestErr);
   });
 
-  test('Should not return bad request error if property size is greater than a defined value', () => {
+  test('Should not return bad request error if property size is greater than 0', () => {
     // const spy = jest.spyOn(validations, 'Min');
 
     // eslint-disable-next-line no-new
