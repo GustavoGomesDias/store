@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import WebTokenService from '@services/WebTokenService';
 import WebToken from '@adapters/services/WebToken';
-import UserModel from '@db/models/IUserModel';
 import { UnauthorizedError } from '@err/UnauthorizedError';
 
 jest.mock('jsonwebtoken', () => ({
@@ -9,7 +8,7 @@ jest.mock('jsonwebtoken', () => ({
     return 'token';
   },
 
-  verify(token: string): unknown {
+  verify(token: string, secretOrPublicKey: jwt.Secret | jwt.GetPublicKeyOrSecret, callback?: jwt.VerifyCallback<string | jwt.JwtPayload> | undefined): unknown {
     return {
       id: 1,
       email: 'email@email.com',
@@ -56,6 +55,17 @@ describe('Bcrypt Service', () => {
     const sut = makeSut();
     const spy = jest.spyOn(jwt, 'verify');
     sut.verify('token');
-    expect(spy).toHaveBeenCalledWith('token', 'shhhh');
+    expect(spy).toHaveBeenCalledWith('token', 'shhhh', expect.any(Function));
   });
+
+  // Ask Nathan at 19 hours
+  // test('Should call with correct password and hash password', async () => {
+  //   process.env.JWT_SECRET = 'shhhh';
+  //   const sut = makeSut();
+  //   const spy = jest.spyOn(jwt, 'verify').mockImplementationOnce((token: string, secretOrPublicKey: jwt.Secret | jwt.GetPublicKeyOrSecret, options?: jwt.VerifyOptions, callback?: jwt.VerifyCallback<string | jwt.JwtPayload> | undefined) => {
+  //     callback?.(new jwt.TokenExpiredError('', new Date(1)), '');
+  //   });
+  //   sut.verify('token');
+  //   expect(spy).toThrow(new UnauthorizedError('Token expirado.'));
+  // });
 });
