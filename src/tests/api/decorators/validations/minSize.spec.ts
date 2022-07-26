@@ -42,7 +42,7 @@ describe('@validations - Minimum property size', () => {
     expect(makeStub).not.toThrow(BadRequestErr);
   });
 
-  test('Should return bad request error if property size is less than a defined value', () => {
+  test('Should class property value is equals value passed by constructor', () => {
     // const spy = jest.spyOn(validations, 'Min');
 
     // eslint-disable-next-line no-new
