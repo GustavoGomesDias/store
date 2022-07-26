@@ -1,5 +1,10 @@
 import { BadRequestErr } from '@err/BadRequestError';
 
+/**
+ *
+ * @param property - Is value for print in message.
+ * @description - Check if value is greater than 0
+ */
 export const IsValidValue = (property: string) => function (target: Object, propertyKey: string) {
   let value: number;
   const getter = function () {
