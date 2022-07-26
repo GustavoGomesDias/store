@@ -6,10 +6,19 @@ const HasAuthorization = () => (target: any, key: string, descriptor: PropertyDe
   const originalMethod = descriptor.value;
 
   descriptor.value = async function (...args: any[]) {
-    const { authorization } = (args[0] as IRequest).headers;
+    if (!(args[0] as IRequest).headers) {
+      throw new UnauthorizedError('Login requerido.');
+    }
+
+    const { authorization } = (args[0] as IRequest).headers as { [key: string]: string };
 
     if (!authorization) {
       throw new UnauthorizedError('Login requerido.');
+    }
+
+    const bearer = authorization.split(' ');
+    if (bearer[0] !== 'Bearer') {
+      throw new UnauthorizedError('Tipo do token inválido.');
     }
 
     return await originalMethod.apply(this, args);
