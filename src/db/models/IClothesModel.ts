@@ -4,4 +4,5 @@ export default interface ClothesModel {
   name: string
   value: number
   quantity: number
+  images: string[]
 }
