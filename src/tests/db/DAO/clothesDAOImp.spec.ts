@@ -8,6 +8,7 @@ describe('Clothes DAO Implementation tests', () => {
     name: 'Blue shirt',
     quantity: 2,
     value: 15.99,
+    images: ['aaa'],
   };
 
   test('Should call prisma create function with correct values', async () => {

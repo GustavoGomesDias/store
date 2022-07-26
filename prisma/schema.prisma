@@ -27,6 +27,16 @@ model clothes {
   createdAt   DateTime      @default(now()) @map("created_at")
   updatedAt   DateTime      @updatedAt @map("updated_at")
   categorizes categorizes[]
+  images      images[]
+}
+
+model images {
+  id        Int      @id @default(autoincrement())
+  imageUrl  String   @db.VarChar(255)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  clothesId Int      @map("clothes_id")
+  clothes   clothes  @relation(fields: [clothesId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model category {
