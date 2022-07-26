@@ -1,7 +1,5 @@
 /* eslint-disable no-return-await */
-import { handleErrors } from '@err/handleErrors';
 import { UnauthorizedError } from '@err/UnauthorizedError';
-import { IResponse } from '@http/IReponse';
 import { IRequest } from '@http/IRequest';
 
 const HasAuthorization = () => (target: any, key: string, descriptor: PropertyDescriptor) => {
