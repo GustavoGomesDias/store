@@ -133,6 +133,7 @@ export default {
     '@helpers/(.*)': '<rootDir>/src/helpers/$1',
     '@validaions/(.*)': '<rootDir>/src/api/decorators/validations/$1',
     '@dtos/(.*)': '<rootDir>/src/api/dtos/$1',
+    '@middlewares/(.*)': '<rootDir>/src/api/middlewares/$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -180,7 +181,7 @@ export default {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
