@@ -1,6 +1,6 @@
 /* eslint-disable no-return-await */
 import { IRequest } from '@http/IRequest';
-import Auth from 'src/api/middlewres/Auth';
+import Auth from '@middlewares/Auth';
 
 export const AuthRequired = () => (target: any, key: string, descriptor: PropertyDescriptor) => {
   const originalMethod = descriptor.value;

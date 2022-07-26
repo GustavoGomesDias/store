@@ -2,7 +2,7 @@ import WebTokenAdapter from '@adapters/services/WebToken';
 import GenericDAO from '@db/DAO/generic/prisma/IGenericDAO';
 import UserModel from '@db/models/IUserModel';
 import { UnauthorizedError } from '@err/UnauthorizedError';
-import { IResponse, IRequest } from '@http/index';
+import { IRequest } from '@http/index';
 import { Inject } from '@inject/Inject';
 import HasAuthorization from '../decorators/validations/HasAuthorization';
 
@@ -19,7 +19,7 @@ export default class Auth {
 
   @HasAuthorization()
   async authentitcated(req: IRequest): Promise<Omit<UserModel, 'password'>> {
-    const authorization = req.headers.authorization as string;
+    const authorization = req.headers?.authorization as string;
     const [, token] = authorization.split(' ');
 
     const data = this.authTokenService.verify(token);
