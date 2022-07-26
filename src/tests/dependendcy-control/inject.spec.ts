@@ -29,8 +29,8 @@ describe('@Inject tests', () => {
     Container['injectionRecord'].clear();
     // eslint-disable-next-line no-new
 
-    const instaceFunction = () => new InjectEncrypStub();
+    const makeStub = () => new InjectEncrypStub();
 
-    expect(instaceFunction).toThrow(DependencyError);
+    expect(makeStub).toThrow(DependencyError);
   });
 });
