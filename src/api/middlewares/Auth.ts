@@ -4,9 +4,8 @@ import UserModel from '@db/models/IUserModel';
 import { UnauthorizedError } from '@err/UnauthorizedError';
 import { IRequest } from '@http/index';
 import { Inject } from '@inject/Inject';
-import HasAuthorization from '../decorators/validations/HasAuthorization';
 
-@Inject(['UserDAOImp, WebToken'])
+@Inject(['UserDAOImp', 'WebToken'])
 export default class Auth {
   private readonly userDAO: GenericDAO;
 
@@ -17,9 +16,22 @@ export default class Auth {
     this.authTokenService = authTokenService as WebTokenAdapter;
   }
 
-  @HasAuthorization()
-  async authentitcated(req: IRequest): Promise<Omit<UserModel, 'password'>> {
-    const authorization = req.headers?.authorization as string;
+  async authentitcated(req: IRequest) {
+    if (!(req).headers) {
+      throw new UnauthorizedError('Login requerido.');
+    }
+
+    const { authorization } = req.headers as { [key: string]: string };
+
+    if (!authorization) {
+      throw new UnauthorizedError('Login requerido.');
+    }
+
+    const bearer = authorization.split(' ');
+    if (bearer[0] !== 'Bearer') {
+      throw new UnauthorizedError('Tipo do token inválido.');
+    }
+
     const [, token] = authorization.split(' ');
 
     const data = this.authTokenService.verify(token);
@@ -28,9 +40,5 @@ export default class Auth {
     if (!user) {
       throw new UnauthorizedError('Login requerido.');
     }
-
-    return {
-      ...data,
-    };
   }
 }
