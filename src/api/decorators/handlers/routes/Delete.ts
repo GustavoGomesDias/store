@@ -2,7 +2,7 @@
 import { IApiRouterDefinition } from '@global/IApi';
 
 /**
- * @param path - The path for delete route
+ * @param path The path for delete route
  */
 
 export const Delete = (path: string) => (target: any, key: string, descriptor: PropertyDescriptor): void => {

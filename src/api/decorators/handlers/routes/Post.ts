@@ -3,7 +3,7 @@
 import { IApiRouterDefinition } from '@global/IApi';
 
 /**
- * @param path - The path for post route
+ * @param path The path for post route
  */
 
 export const Post = (path: string) => (target: any, key: string, descriptor: PropertyDescriptor): void => {

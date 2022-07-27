@@ -2,7 +2,7 @@
 import { IApiRouterDefinition } from '@global/IApi';
 
 /**
- * @param path - The path for get route
+ * @param path The path for get route
  */
 
 export const Get = (path: string) => (target: any, key: string, descriptor: PropertyDescriptor): void => {
