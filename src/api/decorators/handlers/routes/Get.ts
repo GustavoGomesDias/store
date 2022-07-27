@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { IApiRouterDefinition } from '@global/IApi';
 
+/**
+ * @param path - The path for get route
+ */
+
 export const Get = (path: string) => (target: any, key: string, descriptor: PropertyDescriptor): void => {
   if (!Reflect.hasMetadata('routes', target.constructor)) {
     Reflect.defineMetadata('routes', [], target.constructor);

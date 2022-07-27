@@ -2,6 +2,10 @@
 
 import { IApiRouterDefinition } from '@global/IApi';
 
+/**
+ * @param path - The path for put route
+ */
+
 export const Put = (path: string) => (target: any, key: string, descriptor: PropertyDescriptor): void => {
   if (!Reflect.hasMetadata('routes', target.constructor)) {
     Reflect.defineMetadata('routes', [], target.constructor);
