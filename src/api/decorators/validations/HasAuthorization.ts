@@ -2,6 +2,11 @@
 import { UnauthorizedError } from '@err/UnauthorizedError';
 import { IRequest } from '@http/IRequest';
 
+/**
+ *
+ * @description Check if have valid authorization token
+ */
+
 const HasAuthorization = () => (target: any, key: string, descriptor: PropertyDescriptor) => {
   const originalMethod = descriptor.value;
 
