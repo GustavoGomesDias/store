@@ -6,7 +6,7 @@ import { IRequest } from '@http/index';
 import { Inject } from '@inject/Inject';
 import HasAuthorization from '../decorators/validations/HasAuthorization';
 
-@Inject(['UserDAOImp, WebToken'])
+@Inject(['UserDAOImp', 'WebToken'])
 export default class Auth {
   private readonly userDAO: GenericDAO;
 

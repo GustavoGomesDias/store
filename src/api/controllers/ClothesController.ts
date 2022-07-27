@@ -46,7 +46,7 @@ export default class ClothesController extends Controller<AddClothes, Partial<Cl
 
   @Catch()
   @AuthRequired()
-  @Delete('/')
+  @Delete('/:id')
   async delete(req: IRequest): Promise<IResponse> {
     const id = Number(req.params.id);
     await this.enitityDAO.delete(id);
