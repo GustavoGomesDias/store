@@ -7,7 +7,7 @@ export const AuthRequired = () => (target: any, key: string, descriptor: Propert
 
   descriptor.value = async function (...args: any[]) {
     const authMiddleware = new Auth();
-    authMiddleware.authentitcated(args[0] as IRequest);
+    await authMiddleware.authentitcated(args[0] as IRequest);
     return await originalMethod.apply(this, args);
   };
 

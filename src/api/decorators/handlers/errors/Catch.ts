@@ -8,8 +8,12 @@ const Catch = () => (target: any, key: string, descriptor: PropertyDescriptor) =
     try {
       return await originalMethod.apply(this, args);
     } catch (err) {
-      console.log(err);
       const { error, statusCode } = handleErrors(err as Error);
+
+      if (statusCode === 500) {
+        // log
+        console.log(err);
+      }
 
       return {
         statusCode,
