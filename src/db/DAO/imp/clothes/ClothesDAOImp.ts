@@ -9,12 +9,12 @@ export default class ClothesDAOImp extends GenericDAOImp<
   AddClothes,
   Prisma.clothesFindUniqueArgs,
   Prisma.clothesUpdateArgs,
-  Prisma.clothesDeleteArgs
+  number
 > implements IClothesDAO<
   AddClothes,
   Prisma.clothesFindUniqueArgs,
   Prisma.clothesUpdateArgs,
-  Prisma.clothesDeleteArgs
+  number
 > {
   constructor() {
     super(prisma.clothes);

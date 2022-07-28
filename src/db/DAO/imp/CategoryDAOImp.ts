@@ -7,7 +7,7 @@ export default class CategoryDAOImp extends GenericDAOImp<
   AddCategory,
   Prisma.categoryFindUniqueArgs,
   Prisma.categoryUpdateArgs,
-  Prisma.categoryDeleteArgs
+  number
 > {
   constructor() {
     super(prisma.category);
