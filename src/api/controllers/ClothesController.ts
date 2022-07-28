@@ -8,6 +8,7 @@ import { Inject } from '@inject/index';
 import Catch from '@handleError/Catch';
 import ClothesDTO from '@dtos/ClotesDTO';
 import IClothesDAO from '@db/DAO/imp/clothes/IClothesDAO';
+import { NotEmptyRequestBody } from '@validaions/NotEmptyRequestBody';
 import Controller from './Controller';
 
 @Route('/clothes')
@@ -36,6 +37,7 @@ export default class ClothesController extends Controller<IClothesDAO, ClothesWi
   @Catch()
   @AuthRequired()
   @Put('/')
+  @NotEmptyRequestBody()
   async update(req: IRequest<Partial<ClothesModel>>): Promise<IResponse> {
     await this.enitityDAO.update(req.body);
 
