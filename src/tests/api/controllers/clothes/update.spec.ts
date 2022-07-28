@@ -7,7 +7,7 @@ import { Server } from 'http';
 import request from 'supertest';
 import app from '../../../../app';
 
-describe('Clothes Post Route', () => {
+describe('Clothes Put Route', () => {
   let server: Server;
   let supertest: request.SuperAgentTest;
   beforeAll(async () => {
