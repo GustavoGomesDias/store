@@ -12,7 +12,7 @@ export const LengthGreaterThanZero = (property: string) => function (target: Obj
   };
   const setter = function (newVal: any[]) {
     if (newVal.length <= 0) {
-      throw new BadRequestErr(`É preciso pelo menos um ${property}.`);
+      throw new BadRequestErr(`É preciso pelo menos um (a) ${property}.`);
     } else {
       value = newVal;
     }
