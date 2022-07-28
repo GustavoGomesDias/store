@@ -37,6 +37,7 @@ export default {
     '!**/server.ts',
     '!**/MongoConnection.ts',
     '!**/IUserDAO.ts',
+    '!**/IClothesDAO.ts',
     '!**/mocks/**',
     '!**/global/**',
     '!**/http/**',
