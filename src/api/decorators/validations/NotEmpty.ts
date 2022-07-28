@@ -1,5 +1,5 @@
 import { BadRequestErr } from '@err/BadRequestError';
-import { validationField } from '@helpers/validations/index';
+import { isInvalidField } from '@helpers/validations/index';
 
 /**
  *
@@ -12,7 +12,7 @@ export const NotEmpty = (property: string) => function (target: Object, property
     return value;
   };
   const setter = function (newVal: string) {
-    if (validationField(newVal)) {
+    if (isInvalidField(newVal)) {
       throw new BadRequestErr(`${property} é obrigatório.`);
     } else {
       value = newVal;
