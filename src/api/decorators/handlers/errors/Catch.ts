@@ -1,6 +1,10 @@
 import { handleErrors } from '@err/handleErrors';
 import { IResponse } from '@http/IReponse';
 
+/**
+ * @description try/catch wrapper
+ */
+
 const Catch = () => (target: any, key: string, descriptor: PropertyDescriptor) => {
   const originalMethod = descriptor.value;
 

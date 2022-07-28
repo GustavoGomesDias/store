@@ -2,6 +2,10 @@
 import { IRequest } from '@http/IRequest';
 import Auth from '@middlewares/Auth';
 
+/**
+ * @returns Notation for routes that need authentication
+ */
+
 export const AuthRequired = () => (target: any, key: string, descriptor: PropertyDescriptor) => {
   const originalMethod = descriptor.value;
 
