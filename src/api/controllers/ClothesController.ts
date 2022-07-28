@@ -1,5 +1,5 @@
 import ClothesModel from '@db/models/IClothesModel';
-import { AddClothes, ClothesWithoutId } from '@db/usecases/clothes';
+import { ClothesWithoutId } from '@db/usecases/clothes';
 import { IResponse, IRequest } from '@http/index';
 import {
   Route, Delete, Get, Post, Put, AuthRequired,
@@ -9,6 +9,7 @@ import Catch from '@handleError/Catch';
 import ClothesDTO from '@dtos/ClotesDTO';
 import IClothesDAO from '@db/DAO/imp/clothes/IClothesDAO';
 import { NotEmptyRequestBody } from '@validaions/NotEmptyRequestBody';
+import { IsValidNumberParams } from '@validaions/IsValidNumberParams';
 import Controller from './Controller';
 
 @Route('/clothes')
@@ -52,6 +53,7 @@ export default class ClothesController extends Controller<IClothesDAO, ClothesWi
   @Catch()
   @AuthRequired()
   @Delete('/:id')
+  @IsValidNumberParams('id')
   async delete(req: IRequest): Promise<IResponse> {
     const id = Number(req.params.id);
     await this.enitityDAO.delete(id);
@@ -66,6 +68,7 @@ export default class ClothesController extends Controller<IClothesDAO, ClothesWi
 
   @Catch()
   @Get('/:id')
+  @IsValidNumberParams('id')
   async findById(req: IRequest): Promise<IResponse> {
     const id = Number(req.params.id);
     const clothes = await this.enitityDAO.findById(id) as unknown as ClothesModel;
@@ -80,6 +83,7 @@ export default class ClothesController extends Controller<IClothesDAO, ClothesWi
 
   @Catch()
   @Get('/page/:page')
+  @IsValidNumberParams('page')
   async pagination(req: IRequest): Promise<IResponse> {
     const page = Number(req.params.page);
 
