@@ -1,4 +1,4 @@
-import ClothesDAOImp from '@DAOImp/ClothesDAOImp';
+import ClothesDAOImp from '@DAOImp/clothes/ClothesDAOImp';
 import IClothesModel from '@models/IClothesModel';
 
 const makeDAOImp = (): ClothesDAOImp => new ClothesDAOImp();
@@ -17,11 +17,17 @@ describe('Clothes DAO Implementation tests', () => {
     // eslint-disable-next-line dot-notation
     const spy = jest.spyOn(dao['entity'], 'create').mockImplementationOnce(jest.fn());
 
-    await dao.add(clothes);
+    const { images, ...rest } = clothes;
+    await dao.addClothes({
+      ...clothes,
+    });
 
     expect(spy).toHaveBeenCalledWith({
       data: {
-        ...clothes,
+        ...rest,
+        images: {
+          set: images,
+        },
       },
     });
   });
