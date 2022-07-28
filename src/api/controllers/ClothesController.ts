@@ -7,6 +7,7 @@ import {
 import { Inject } from '@inject/index';
 import GenericDAO from '@DAO/prisma/IGenericDAO';
 import Catch from '@handleError/Catch';
+import ClothesDTO from '@dtos/ClotesDTO';
 import Controller from './Controller';
 
 @Route('/clothes')
@@ -20,6 +21,8 @@ export default class ClothesController extends Controller<AddClothes, Partial<Cl
   @AuthRequired()
   @Post('/')
   async create(req: IRequest<AddClothes>): Promise<IResponse> {
+    // eslint-disable-next-line no-new
+    new ClothesDTO(req.body?.name as string, req.body?.value as number, req.body?.quantity as number, req.body?.images as string[]);
     await this.enitityDAO.add(req.body);
 
     return {
