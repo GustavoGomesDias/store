@@ -10,13 +10,13 @@ import app from '../../../../app';
 describe('Clothes Put Route', () => {
   let server: Server;
   let supertest: request.SuperAgentTest;
-  beforeAll(async () => {
-    server = app.listen(4001);
+  beforeAll(() => {
+    server = app.listen(4002);
 
     supertest = request.agent(server);
   });
 
-  afterAll(async () => {
+  afterAll(() => {
     if (server) {
       Container['injectionRecord'].clear();
       server.close();
