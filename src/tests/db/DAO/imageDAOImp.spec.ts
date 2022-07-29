@@ -8,7 +8,7 @@ const makeDAOImp = (): ImageDAOImp => new ImageDAOImp();
 describe('Category DAO Implementation tests', () => {
   const image: AddImages = {
     clothesId: 1,
-    imageUrl: 'https://www.google.com',
+    image: 'https://www.google.com',
   };
 
   test('Should call prisma create function with correct values', async () => {
@@ -18,11 +18,15 @@ describe('Category DAO Implementation tests', () => {
 
     const spy = jest.spyOn(dao['entity'], 'create');
 
-    await dao.add(image);
+    await dao.add({
+      imageUrl: image.image,
+      clothesId: image.clothesId,
+    });
 
     expect(spy).toHaveBeenCalledWith({
       data: {
-        ...image,
+        imageUrl: image.image,
+        clothesId: image.clothesId,
       },
     });
   });
