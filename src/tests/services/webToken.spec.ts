@@ -20,7 +20,7 @@ jest.mock('jsonwebtoken', () => ({
 
 const makeSut = (): WebToken => new WebTokenService();
 
-describe('Bcrypt Service', () => {
+describe('JWT Service', () => {
   const OLD_ENV = process.env;
 
   beforeEach(() => {
