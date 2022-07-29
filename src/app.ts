@@ -30,8 +30,8 @@ class App {
 
   constructor() {
     this.app = express();
-    this.app.use(express.urlencoded({ extended: true }));
-    this.app.use(express.json());
+    this.app.use(express.urlencoded({ limit: '100mb', extended: true }));
+    this.app.use(express.json({ limit: '100mb' }));
     this.app.use(cors(options));
     this.makeRouter();
   }
@@ -46,6 +46,7 @@ class App {
       for (const route of routes) {
         // eslint-disable-next-line no-return-await
         router[route.method](`${route.path}`, async (req, res) => {
+          console.log(req);
           const response = await instance[String(route.controllerMethod)](req) as IResponse;
           return res.status(response.statusCode).json({ body: response.body });
         }).bind(instance);
