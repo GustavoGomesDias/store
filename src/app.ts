@@ -46,7 +46,6 @@ class App {
       for (const route of routes) {
         // eslint-disable-next-line no-return-await
         router[route.method](`${route.path}`, async (req, res) => {
-          console.log(req);
           const response = await instance[String(route.controllerMethod)](req) as IResponse;
           return res.status(response.statusCode).json({ body: response.body });
         }).bind(instance);
