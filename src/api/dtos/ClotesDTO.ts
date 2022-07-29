@@ -11,13 +11,9 @@ export default class ClothesDTO implements Omit<ClothesModel, 'id'> {
   @IsValidValue('Quantidade das roupas')
   public quantity: number;
 
-  @LengthGreaterThanZero('imagem')
-  public images: string[];
-
-  constructor(name: string, value: number, quantity: number, images: string[]) {
+  constructor(name: string, value: number, quantity: number) {
     this.name = name;
     this.value = value;
     this.quantity = quantity;
-    this.images = images;
   }
 }
