@@ -1,4 +1,5 @@
-import IImageModel from '@db/models/IImageModel';
-
-export type AddImages = Omit<IImageModel, 'id'>;
+export type AddImages = {
+  image: string
+  clothesId: number
+}
 export type EditImage = Partial<AddImages>

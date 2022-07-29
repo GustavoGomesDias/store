@@ -4,13 +4,13 @@ import { IsValidValue } from '@validaions/IsValidValue';
 
 export default class ImageDTO implements AddImages {
   @IsUrl()
-  public imageUrl: string;
+  public image: string;
 
   @IsValidValue('Id da roupa')
   public clothesId: number;
 
-  constructor(imageUrl: string, clothesId: number) {
-    this.imageUrl = imageUrl;
+  constructor(image: string, clothesId: number) {
+    this.image = image;
     this.clothesId = clothesId;
   }
 }
