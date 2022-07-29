@@ -47,6 +47,10 @@ export default abstract class GenericDAOImp<
   }
 
   async delete(data: D): Promise<void> {
-    await this.entity.delete(data);
+    await this.entity.delete({
+      where: {
+        id: data,
+      },
+    });
   }
 }

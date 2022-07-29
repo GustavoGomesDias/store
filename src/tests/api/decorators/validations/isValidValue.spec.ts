@@ -27,6 +27,21 @@ describe('@validations - Validate value', () => {
     expect(makeStub).toThrow(BadRequestErr);
   });
 
+  test('Should return bad request error if property is not a number', () => {
+    // const spy = jest.spyOn(validations, 'Min');
+
+    // eslint-disable-next-line no-new
+    const makeStub = () => {
+      try {
+        return new TestDTOStub('aaa' as unknown as number);
+      } catch (err) {
+        throw err;
+      }
+    };
+
+    expect(makeStub).toThrow(BadRequestErr);
+  });
+
   test('Should not return bad request error if property size is greater than 0', () => {
     // const spy = jest.spyOn(validations, 'Min');
 

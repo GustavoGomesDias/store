@@ -75,7 +75,7 @@ describe('Category DAO Implementation tests', () => {
       },
     };
 
-    await dao.delete(data);
+    await dao.delete(1);
 
     expect(spy).toHaveBeenCalledWith(data);
   });

@@ -13,12 +13,12 @@ export default class UserDAOImp extends GenericDAOImp<
   AddUser,
   Prisma.userFindManyArgs,
   Prisma.userUpdateArgs,
-  Prisma.userDeleteArgs
+  number
 > implements IUserDAO<
 AddUser,
   Prisma.userFindManyArgs,
   Prisma.userUpdateArgs,
-  Prisma.userDeleteArgs
+  number
 > {
   private readonly encrypter: Encrypt;
 

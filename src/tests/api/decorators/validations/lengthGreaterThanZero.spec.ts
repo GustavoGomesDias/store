@@ -4,7 +4,7 @@ import * as validations from '@validaions/index';
 
 describe('@validations - Validate value', () => {
   class TestDTOStub {
-    @validations.GreaterThanZero('Property')
+    @validations.LengthGreaterThanZero('Property')
     public property: string[];
 
     constructor(property: string[]) {

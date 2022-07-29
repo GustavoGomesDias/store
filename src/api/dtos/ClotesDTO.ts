@@ -1,5 +1,5 @@
 import ClothesModel from '@db/models/IClothesModel';
-import { IsValidValue, GreaterThanZero, Min } from '@validaions/index';
+import { IsValidValue, LengthGreaterThanZero, Min } from '@validaions/index';
 
 export default class ClothesDTO implements Omit<ClothesModel, 'id'> {
   @Min(8, 'Nome da roupa')
@@ -11,7 +11,7 @@ export default class ClothesDTO implements Omit<ClothesModel, 'id'> {
   @IsValidValue('Quantidade das roupas')
   public quantity: number;
 
-  @GreaterThanZero('imagem')
+  @LengthGreaterThanZero('imagem')
   public images: string[];
 
   constructor(name: string, value: number, quantity: number, images: string[]) {
