@@ -12,6 +12,7 @@ export const dependencyFactory = (): void => {
 
   // Persistence
   Container.register('ClothesDAOImp', new DAO.default.ClothesDAOImp());
+  Container.register('ImageDAOImp', new DAO.default.ImageDAOImp());
   Container.register('CategoryDAOImp', new DAO.default.CategoryDAOImp());
   Container.register('CategorizesDAOImp', new DAO.default.CategorizesDAOImp());
   Container.register('UserDAOImp', new DAO.default.UserDAOImp());
