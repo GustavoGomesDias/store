@@ -8,7 +8,6 @@ describe('Clothes DAO Implementation tests', () => {
     name: 'Blue shirt',
     quantity: 2,
     value: 15.99,
-    images: ['https://images.com'],
   };
 
   test('Should call prisma create function with correct values', async () => {
@@ -17,17 +16,11 @@ describe('Clothes DAO Implementation tests', () => {
     // eslint-disable-next-line dot-notation
     const spy = jest.spyOn(dao['entity'], 'create').mockImplementationOnce(jest.fn());
 
-    const { images, ...rest } = clothes;
-    await dao.addClothes({
-      ...clothes,
-    });
+    await dao.add(clothes);
 
     expect(spy).toHaveBeenCalledWith({
       data: {
-        ...rest,
-        images: {
-          set: images,
-        },
+        ...clothes,
       },
     });
   });

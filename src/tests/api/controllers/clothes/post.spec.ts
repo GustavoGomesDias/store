@@ -27,7 +27,6 @@ describe('Clothes Post Route', () => {
     name: 'blue shirt',
     quantity: 3,
     value: 14.99,
-    images: ['https://picsum.photos/seed/picsum/200/300'],
   };
 
   test('Should return 400 if name is empty', async () => {
@@ -100,21 +99,7 @@ describe('Clothes Post Route', () => {
     expect(response.body.body.error).toEqual('Quantidade das roupas precisa ser um número e maior que 0.');
   });
 
-  test('Should return 400 if not have image.', async () => {
-    jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
-    const { images, ...rest } = mockedClothes;
-    const response = await supertest.post('/clothes')
-      .expect('Content-Type', /json/)
-      .send({
-        ...rest,
-        images: [],
-      });
-
-    expect(response.statusCode).toEqual(400);
-    expect(response.body.body.error).toEqual('É preciso pelo menos um (a) imagem.');
-  });
-
-  test('Should return 400 if not have image.', async () => {
+  test('Should return 200 if is created clothes.', async () => {
     prismaMock.clothes.create.mockImplementationOnce(jest.fn());
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     const response = await supertest.post('/clothes')

@@ -24,7 +24,6 @@ describe('Clothes Pagination Route', () => {
     name: 'blue shirt',
     quantity: 3,
     value: 14.99,
-    images: ['https://picsum.photos/seed/picsum/200/300'],
   };
 
   test('Should call DAO pagination function with correct id', async () => {
