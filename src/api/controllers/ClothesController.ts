@@ -23,8 +23,9 @@ export default class ClothesController extends Controller<IClothesDAO, AddClothe
   @AuthRequired()
   @Post('/')
   async create(req: IRequest<AddClothes>): Promise<IResponse> {
+    const { name, quantity, value } = req.body as unknown as AddClothes;
     // eslint-disable-next-line no-new
-    new ClothesDTO(req.body?.name as string, req.body?.value as number, req.body?.quantity as number);
+    new ClothesDTO(name, value, quantity);
     await this.enitityDAO.add(req.body as AddClothes);
 
     return {
