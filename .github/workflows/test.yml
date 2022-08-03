@@ -34,7 +34,7 @@ jobs:
           echo DATABASE_URL=${{ secrets.API_CLOUDNARY_KEY }} >> .env
           echo DATABASE_URL=${{ secrets.API_CLOUDNARY_SECRET }} >> .env
           cat .env
-      - name: Run npm commands
+      - name: Run unit tests
         run: npm ci && npm test
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
