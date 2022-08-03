@@ -29,11 +29,12 @@ export default class ImageController extends Controller<ImageDAOImp, AddImages, 
   @AuthRequired()
   @Post('/')
   async create(req: IRequest<AddImages>): Promise<IResponse> {
-    new ImageDTO(req.body?.image as string, req.body?.clothesId as number);
+    const { clothesId, image } = req.body as unknown as AddImages;
+    new ImageDTO(image, clothesId);
 
-    const imageUrl = await this.imageStore.saveImage(req.body?.image as string);
+    const imageUrl = await this.imageStore.saveImage(image as string);
 
-    await this.enitityDAO.add({ imageUrl, clothesId: req.body?.clothesId as number });
+    await this.enitityDAO.add({ imageUrl, clothesId: clothesId as number });
 
     return {
       statusCode: 201,
@@ -47,13 +48,14 @@ export default class ImageController extends Controller<ImageDAOImp, AddImages, 
   @AuthRequired()
   @Put('/')
   async update(req: IRequest<AddImages>): Promise<IResponse> {
-    new ImageDTO(req.body?.image as string, req.body?.clothesId as number);
+    const { clothesId, image } = req.body as unknown as AddImages;
+    new ImageDTO(image, clothesId);
 
-    if (validateUrl(req.body?.image as string)) {
-      await this.enitityDAO.updateImage({ imageUrl: req.body?.image as string, clothesId: req.body?.clothesId as number });
+    if (validateUrl(image)) {
+      await this.enitityDAO.updateImage({ imageUrl: image, clothesId });
     } else {
-      const imageUrl = await this.imageStore.saveImage(req.body?.image as string);
-      await this.enitityDAO.updateImage({ imageUrl, clothesId: req.body?.clothesId as number });
+      const imageUrl = await this.imageStore.saveImage(image);
+      await this.enitityDAO.updateImage({ imageUrl, clothesId });
     }
 
     return {
