@@ -30,8 +30,8 @@ class App {
 
   constructor() {
     this.app = express();
-    this.app.use(express.urlencoded({ extended: true }));
-    this.app.use(express.json());
+    this.app.use(express.urlencoded({ limit: '100mb', extended: true }));
+    this.app.use(express.json({ limit: '100mb' }));
     this.app.use(cors(options));
     this.makeRouter();
   }

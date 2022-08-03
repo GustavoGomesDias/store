@@ -1,26 +1,32 @@
-import ClothesDAOImp from '@DAOImp/clothes/ClothesDAOImp';
-import IClothesModel from '@models/IClothesModel';
+/* eslint-disable dot-notation */
+import ImageDAOImp from '@DAOImp/image/ImageDAOImp';
+import { AddImages } from '@db/usecases/images';
+import imageMock from '@mocks/DAO/imageMock';
 
-const makeDAOImp = (): ClothesDAOImp => new ClothesDAOImp();
+const makeDAOImp = (): ImageDAOImp => new ImageDAOImp();
 
-describe('Clothes DAO Implementation tests', () => {
-  const clothes: Omit<IClothesModel, 'id'> = {
-    name: 'Blue shirt',
-    quantity: 2,
-    value: 15.99,
+describe('Category DAO Implementation tests', () => {
+  const image: AddImages = {
+    clothesId: 1,
+    image: 'https://www.google.com',
   };
 
   test('Should call prisma create function with correct values', async () => {
     const dao = makeDAOImp();
 
-    // eslint-disable-next-line dot-notation
-    const spy = jest.spyOn(dao['entity'], 'create').mockImplementationOnce(jest.fn());
+    dao['entity'] = imageMock.images;
 
-    await dao.add(clothes);
+    const spy = jest.spyOn(dao['entity'], 'create');
+
+    await dao.add({
+      imageUrl: image.image,
+      clothesId: image.clothesId,
+    });
 
     expect(spy).toHaveBeenCalledWith({
       data: {
-        ...clothes,
+        imageUrl: image.image,
+        clothesId: image.clothesId,
       },
     });
   });
@@ -51,7 +57,7 @@ describe('Clothes DAO Implementation tests', () => {
         id: 1,
       },
 
-      data: clothes,
+      data: image,
     };
 
     await dao.update(data);

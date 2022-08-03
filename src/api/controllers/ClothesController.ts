@@ -1,5 +1,5 @@
 import ClothesModel from '@db/models/IClothesModel';
-import { ClothesWithoutId } from '@db/usecases/clothes';
+import { AddClothes } from '@db/usecases/clothes';
 import { IResponse, IRequest } from '@http/index';
 import {
   Route, Delete, Get, Post, Put, AuthRequired,
@@ -14,7 +14,7 @@ import Controller from './Controller';
 
 @Route('/clothes')
 @Inject(['ClothesDAOImp'])
-export default class ClothesController extends Controller<IClothesDAO, ClothesWithoutId, Partial<ClothesModel>> {
+export default class ClothesController extends Controller<IClothesDAO, AddClothes, Partial<ClothesModel>> {
   constructor(enitityDAO?: IClothesDAO) {
     super(enitityDAO as IClothesDAO);
   }
@@ -22,10 +22,10 @@ export default class ClothesController extends Controller<IClothesDAO, ClothesWi
   @Catch()
   @AuthRequired()
   @Post('/')
-  async create(req: IRequest<ClothesWithoutId>): Promise<IResponse> {
+  async create(req: IRequest<AddClothes>): Promise<IResponse> {
     // eslint-disable-next-line no-new
-    new ClothesDTO(req.body?.name as string, req.body?.value as number, req.body?.quantity as number, req.body?.images as string[]);
-    await this.enitityDAO.addClothes(req.body as ClothesWithoutId);
+    new ClothesDTO(req.body?.name as string, req.body?.value as number, req.body?.quantity as number);
+    await this.enitityDAO.add(req.body as AddClothes);
 
     return {
       statusCode: 201,

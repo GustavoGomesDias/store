@@ -27,7 +27,6 @@ describe('Clothes Put Route', () => {
     name: 'blue shirt',
     quantity: 3,
     value: 14.99,
-    images: ['https://picsum.photos/seed/picsum/200/300'],
   };
 
   test('Should return an error for empty body', async () => {

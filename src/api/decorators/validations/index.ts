@@ -5,3 +5,5 @@ export * from './IsEmail';
 export * from './NotEmpty';
 export * from './NotEmptyRequestBody';
 export * from './IsValidNumberParams';
+export * from './IsUrl';
+export * from './isImage';
