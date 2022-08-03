@@ -1,18 +1,18 @@
 import { BadRequestErr } from '@err/BadRequestError';
-import { validateBase64Image } from '@helpers/validations';
+import { validateBase64Image, validateUrl } from '@helpers/validations';
 
 /**
  *
  *  @description - Check if string is a valid Base64 information
  */
 
-export const isBase64 = () => function (target: Object, propertyKey: string) {
+export const isImage = () => function (target: Object, propertyKey: string) {
   let value: string;
   const getter = function () {
     return value;
   };
   const setter = function (newVal: string) {
-    if (!validateBase64Image(newVal)) {
+    if (!validateBase64Image(newVal) && !validateUrl(newVal)) {
       throw new BadRequestErr('Esta não é uma imagem válida.');
     } else {
       value = newVal;
