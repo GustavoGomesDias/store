@@ -6,4 +6,4 @@ export * from './NotEmpty';
 export * from './NotEmptyRequestBody';
 export * from './IsValidNumberParams';
 export * from './IsUrl';
-export * from './isBase64';
+export * from './isImage';

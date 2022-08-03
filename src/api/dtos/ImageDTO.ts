@@ -1,9 +1,9 @@
 import { AddImages } from '@db/usecases/images';
-import { isBase64 } from '@validaions/index';
+import { isImage } from '@validaions/index';
 import { IsValidValue } from '@validaions/IsValidValue';
 
 export default class ImageDTO implements AddImages {
-  @isBase64()
+  @isImage()
   public image: string;
 
   @IsValidValue('Id da roupa')

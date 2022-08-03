@@ -8,10 +8,11 @@ import ImageDAOImp from '@db/DAO/imp/image/ImageDAOImp';
 import { AddImages, EditImage } from '@db/usecases/images';
 import ImageDTO from '@dtos/ImageDTO';
 import Catch from '@handleError/Catch';
+import { validateUrl } from '@helpers/validations';
 import { IResponse } from '@http/IReponse';
 import { IRequest } from '@http/IRequest';
 import { Inject } from '@inject/Inject';
-import { IsValidNumberParams, NotEmptyRequestBody } from '@validaions/index';
+import { IsValidNumberParams } from '@validaions/index';
 import Controller from './Controller';
 
 @Route('/upload')
@@ -45,19 +46,14 @@ export default class ImageController extends Controller<ImageDAOImp, AddImages, 
   @Catch()
   @AuthRequired()
   @Put('/')
-  @NotEmptyRequestBody()
-  async update(req: IRequest<Partial<AddImages>>): Promise<IResponse> {
-    let imageUrl = '';
-    let hasImage = false;
-    if (req.body?.image) {
-      hasImage = true;
-      imageUrl = await this.imageStore.saveImage(req.body.image);
-    }
+  async update(req: IRequest<AddImages>): Promise<IResponse> {
+    new ImageDTO(req.body?.image as string, req.body?.clothesId as number);
 
-    if (!hasImage) {
-      await this.enitityDAO.updateImage(req.body as Partial<AddImages>);
+    if (validateUrl(req.body?.image as string)) {
+      await this.enitityDAO.updateImage({ imageUrl: req.body?.image as string, clothesId: req.body?.clothesId as number });
     } else {
-      await this.enitityDAO.updateImage({ imageUrl, clothesId: req.body?.clothesId });
+      const imageUrl = await this.imageStore.saveImage(req.body?.image as string);
+      await this.enitityDAO.updateImage({ imageUrl, clothesId: req.body?.clothesId as number });
     }
 
     return {
