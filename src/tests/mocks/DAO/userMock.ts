@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import { Prisma, PrismaClient } from '@prisma/client';
-import { DeepMockProxy } from 'jest-mock-extended';
+import { any, CalledWithMock, DeepMockProxy } from 'jest-mock-extended';
 
 import prisma from '@infra/PrismaConnection';
 import IUserModel from '@db/models/IUserModel';
@@ -24,6 +24,17 @@ jest.mock('@DAOImp/user/UserDAOImp', () => ({
       updatedAt: date,
     }),
 
+    findById: async (id: number) => {
+      const result = await Promise.resolve({
+        id: 1,
+        ...user,
+        createdAt: date,
+        updatedAt: date,
+      });
+
+      return result;
+    },
+
     create: jest.fn(),
 
     update: jest.fn(),
@@ -37,5 +48,16 @@ const userMock = UserDAOImp as unknown as DeepMockProxy<UserDAOImp>;
 // beforeEach(() => {
 //   mockReset(entityMock);
 // });
+
+userMock.findById = (async (id: number) => {
+  const result = await Promise.resolve({
+    id: 1,
+    ...user,
+    createdAt: date,
+    updatedAt: date,
+  });
+
+  return result;
+}) as any;
 
 export default userMock;
