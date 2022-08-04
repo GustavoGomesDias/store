@@ -11,18 +11,6 @@ on:
       - "main"
       - "master"
 jobs:
-  setup:
-    runs-on: "ubuntu-latest"
-    steps:
-      - run: |
-          touch .env
-          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
-          echo DATABASE_URL=${{ secrets.JWT_SECRET }} >> .env
-          echo DATABASE_URL=${{ secrets.CLOUDNARY_NAME }} >> .env
-          echo DATABASE_URL=${{ secrets.API_CLOUDNARY_KEY }} >> .env
-          echo DATABASE_URL=${{ secrets.API_CLOUDNARY_SECRET }} >> .env
-          echo DATABASE_URL=${{ secrets.API_CLOUDNARY_SECRET }} >> .env
-          cat .env
   tests:
     needs: setup
     name: run tests
@@ -56,6 +44,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
+      - run: |
+          touch .env
+          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+          echo DATABASE_URL=${{ secrets.JWT_SECRET }} >> .env
+          echo DATABASE_URL=${{ secrets.CLOUDNARY_NAME }} >> .env
+          echo DATABASE_URL=${{ secrets.API_CLOUDNARY_KEY }} >> .env
+          echo DATABASE_URL=${{ secrets.API_CLOUDNARY_SECRET }} >> .env
+          echo DATABASE_URL=${{ secrets.API_CLOUDNARY_SECRET }} >> .env
+          cat .env
       - run: npm run build
       - run: npm run create-db
   deploy:
