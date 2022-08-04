@@ -46,11 +46,10 @@ jobs:
       - run: |
           touch .env
           echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
-          echo DATABASE_URL=${{ secrets.JWT_SECRET }} >> .env
-          echo DATABASE_URL=${{ secrets.CLOUDNARY_NAME }} >> .env
-          echo DATABASE_URL=${{ secrets.API_CLOUDNARY_KEY }} >> .env
-          echo DATABASE_URL=${{ secrets.API_CLOUDNARY_SECRET }} >> .env
-          echo DATABASE_URL=${{ secrets.API_CLOUDNARY_SECRET }} >> .env
+          echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
+          echo CLOUDNARY_NAME=${{ secrets.CLOUDNARY_NAME }} >> .env
+          echo API_CLOUDNARY_KEY=${{ secrets.API_CLOUDNARY_KEY }} >> .env
+          echo API_CLOUDNARY_SECRET=${{ secrets.API_CLOUDNARY_SECRET }} >> .env
           cat .env
       - run: npm run build
       - run: npm run create-db
