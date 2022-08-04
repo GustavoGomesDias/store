@@ -1,6 +1,5 @@
-import WebTokenAdapter from '@adapters/services/WebToken';
+import WebToken from '@adapters/services/WebToken';
 import GenericDAO from '@db/DAO/generic/prisma/IGenericDAO';
-import UserModel from '@db/models/IUserModel';
 import { UnauthorizedError } from '@err/UnauthorizedError';
 import { IRequest } from '@http/index';
 import { Inject } from '@inject/Inject';
@@ -9,11 +8,11 @@ import { Inject } from '@inject/Inject';
 export default class Auth {
   private readonly userDAO: GenericDAO;
 
-  private readonly authTokenService: WebTokenAdapter;
+  private readonly authTokenService: WebToken;
 
-  constructor(userDAO?: GenericDAO, authTokenService?: WebTokenAdapter) {
+  constructor(userDAO?: GenericDAO, authTokenService?: WebToken) {
     this.userDAO = userDAO as GenericDAO;
-    this.authTokenService = authTokenService as WebTokenAdapter;
+    this.authTokenService = authTokenService as WebToken;
   }
 
   async authentitcated(req: IRequest) {
