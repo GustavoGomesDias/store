@@ -1,9 +1,9 @@
-name: Run tests in push to any branch
+name: Run tests in devlopment branch
 
 on:
   push:
     branches:
-      - "*"
+      - "dev"
 jobs:
   tests:
     name: run tests
@@ -19,6 +19,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - name: Run unit tests
-        run: npm ci && npm test
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        run: npm ci && npm test'
