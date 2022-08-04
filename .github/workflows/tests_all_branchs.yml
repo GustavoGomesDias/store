@@ -1,4 +1,4 @@
-name: Build and deploy in Heroku
+name: Run tests in push to any branch
 
 on:
   push:
