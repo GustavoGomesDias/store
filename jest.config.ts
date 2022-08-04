@@ -39,6 +39,7 @@ export default {
     '!**/IUserDAO.ts',
     '!**/IClothesDAO.ts',
     '!**/IImageDAO.ts',
+    '!**/Welcome.ts',
     '!**/mocks/**',
     '!**/global/**',
     '!**/http/**',
