@@ -12,15 +12,15 @@ describe('Images Post Route', () => {
   let server: Server;
   let supertest: request.SuperAgentTest;
   beforeAll(() => {
-    server = app.listen(7676);
+    server = app.listen();
 
     supertest = request.agent(server);
   });
 
-  afterAll(() => {
+  afterAll((done) => {
     if (server) {
       Container['injectionRecord'].clear();
-      server.close();
+      server.close(done);
     }
   });
 

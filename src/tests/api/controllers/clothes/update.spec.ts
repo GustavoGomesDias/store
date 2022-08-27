@@ -11,15 +11,15 @@ describe('Clothes Put Route', () => {
   let server: Server;
   let supertest: request.SuperAgentTest;
   beforeAll(() => {
-    server = app.listen(4002);
+    server = app.listen();
 
     supertest = request.agent(server);
   });
 
-  afterAll(() => {
+  afterAll((done) => {
     if (server) {
       Container['injectionRecord'].clear();
-      server.close();
+      server.close(done);
     }
   });
 

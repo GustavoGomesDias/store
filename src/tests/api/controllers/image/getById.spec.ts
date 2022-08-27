@@ -10,13 +10,13 @@ describe('Images Get By Id Route', () => {
   let server: Server;
   let supertest: request.SuperAgentTest;
   beforeAll(() => {
-    server = app.listen(0);
+    server = app.listen();
     supertest = request.agent(server);
   });
 
-  afterAll(() => {
+  afterAll((done) => {
     if (server) {
-      server.close();
+      server.close(done);
     }
   });
 

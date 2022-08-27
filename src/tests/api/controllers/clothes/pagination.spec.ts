@@ -10,13 +10,13 @@ describe('Clothes Pagination Route', () => {
   let server: Server;
   let supertest: request.SuperAgentTest;
   beforeAll(() => {
-    server = app.listen(8781);
+    server = app.listen();
     supertest = request.agent(server);
   });
 
-  afterAll(() => {
+  afterAll((done) => {
     if (server) {
-      server.close();
+      server.close(done);
     }
   });
 

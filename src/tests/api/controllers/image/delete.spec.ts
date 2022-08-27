@@ -15,9 +15,9 @@ describe('Image delete route', () => {
     supertest = request.agent(server);
   });
 
-  afterAll(() => {
+  afterAll((done) => {
     if (server) {
-      server.close();
+      server.close(done);
     }
   });
 
