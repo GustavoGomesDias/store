@@ -12,7 +12,7 @@ describe('Images Post Route', () => {
   let server: Server;
   let supertest: request.SuperAgentTest;
   beforeAll(() => {
-    server = app.listen(4949);
+    server = app.listen(7676);
 
     supertest = request.agent(server);
   });

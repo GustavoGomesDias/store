@@ -11,7 +11,7 @@ describe('Image delete route', () => {
   let supertest: request.SuperAgentTest;
 
   beforeAll(() => {
-    server = app.listen(4003);
+    server = app.listen();
     supertest = request.agent(server);
   });
 
