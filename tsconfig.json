@@ -42,12 +42,12 @@
       "@err/*": ["src/helpers/errors/*"],
       "@http/*": ["src/helpers/http/*"],
       "@helpers/*": ["src/helpers/*"],
-      "@api/*": ["src/api/decorators/handlers/routes/*"],
-      "@handleError/*": ["src/api/decorators/handlers/errors/*"],
+      "@api/*": ["src/api/helpers/handlers/routes/*"],
+      "@handleError/*": ["src/api/helpers/handlers/errors/*"],
       "@inject/*": ["src/dependency-control/decorators/*"],
       "@DI/*": ["src/dependency-control/*"],
       "@controllers/*": ["src/api/controllers/*"],
-      "@validaions/*": ["src/api/decorators/validations/*"],
+      "@validations/*": ["src/api/helpers/validations/*"],
       "@dtos/*": ["src/api/dtos/*"],
       "@middlewares/*": ["src/api/middlewares/*"]
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */

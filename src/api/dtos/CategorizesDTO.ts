@@ -1,5 +1,5 @@
 import CategorizesModel from '@models/ICategorizesModel';
-import { IsValidValue } from '@validaions/IsValidValue';
+import { IsValidValue } from '../helpers/validations/IsValidValue';
 
 export default class CategorizesDTO implements Omit<CategorizesModel, 'id'> {
   @IsValidValue('Id da roupa')

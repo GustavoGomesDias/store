@@ -1,6 +1,5 @@
 import { AddImages } from '@db/usecases/images';
-import { isImage } from '@validaions/index';
-import { IsValidValue } from '@validaions/IsValidValue';
+import { isImage, IsValidValue } from '../helpers/validations/index';
 
 export default class ImageDTO implements AddImages {
   @isImage()

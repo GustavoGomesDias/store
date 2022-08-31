@@ -116,7 +116,7 @@ export default {
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '@global/(.*)': '<rootDir>/src/global/$1',
+    '@global/(.*)': '<rootDir>/src/api/global/$1',
     '@db/(.*)': '<rootDir>/src/db/$1',
     '@DAO/(.*)': '<rootDir>/src/db/DAO/generic/$1',
     '@DAOImp/(.*)': '<rootDir>/src/db/DAO/imp/$1',
@@ -128,13 +128,13 @@ export default {
     '@services/(.*)': '<rootDir>/src/services/$1',
     '@err/(.*)': '<rootDir>/src/helpers/errors/$1',
     '@http/(.*)': '<rootDir>/src/helpers/http/$1',
-    '@api/(.*)': '<rootDir>/src/api/decorators/handlers/routes/$1',
-    '@handleError/(.*)': '<rootDir>/src/api/decorators/handlers/errors/$1',
+    '@api/(.*)': '<rootDir>/src/api/helpers/handlers/routes/$1',
+    '@handleError/(.*)': '<rootDir>/src/api/helpers/handlers/errors/$1',
     '@inject/(.*)': '<rootDir>/src/dependency-control/decorators/$1',
     '@DI/(.*)': '<rootDir>/src/dependency-control/$1',
     '@controllers/(.*)': '<rootDir>/src/api/controllers/$1',
     '@helpers/(.*)': '<rootDir>/src/helpers/$1',
-    '@validaions/(.*)': '<rootDir>/src/api/decorators/validations/$1',
+    '@validations/(.*)': '<rootDir>/src/api/helpers/validations/$1',
     '@dtos/(.*)': '<rootDir>/src/api/dtos/$1',
     '@middlewares/(.*)': '<rootDir>/src/api/middlewares/$1',
   },

@@ -3,7 +3,7 @@
 import {
   Delete, Get, Post, Put, Route,
 } from '@api/index';
-import { IApiRouterDefinition } from 'src/api/global/IApi';
+import { IApiRouterDefinition } from '@global/IApi';
 import { IRequest, IResponse } from '@http/index';
 
 describe('@routes - Get router test', () => {

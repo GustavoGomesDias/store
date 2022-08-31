@@ -12,7 +12,7 @@ import { validateUrl } from '@helpers/validations';
 import { IResponse } from '@http/IReponse';
 import { IRequest } from '@http/IRequest';
 import { Inject } from '@inject/Inject';
-import { IsValidNumberParams } from '@validaions/index';
+import { IsValidNumberParams } from '@validations/index';
 import Controller from './Controller';
 
 @Route('/upload')
