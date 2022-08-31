@@ -9,20 +9,20 @@ import { UploadApiResponse, v2 as cloudinary } from 'cloudinary';
 import app from '../../../../app';
 
 describe('Images Post Route', () => {
-  let server: Server;
-  let supertest: request.SuperAgentTest;
-  beforeAll(() => {
-    server = app.listen();
+  // let server: Server;
+  // let supertest: request.SuperAgentTest;
+  // beforeAll(() => {
+  //   server = app.listen();
 
-    supertest = request.agent(server);
-  });
+  //   supertest = request.agent(server);
+  // });
 
-  afterAll((done) => {
-    if (server) {
-      Container['injectionRecord'].clear();
-      server.close(done);
-    }
-  });
+  // afterAll((done) => {
+  //   if (server) {
+  //     Container['injectionRecord'].clear();
+  //     server.close(done);
+  //   }
+  // });
 
   const mockedImage: AddImages = {
     clothesId: 1,
@@ -32,7 +32,7 @@ describe('Images Post Route', () => {
   test('Should return 400 if image is empty', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     const { image, ...rest } = mockedImage;
-    const response = await supertest.post('/upload')
+    const response = await request(app).post('/upload')
       .expect('Content-Type', /json/)
       .send({
         ...rest,
@@ -46,7 +46,7 @@ describe('Images Post Route', () => {
   test('Should return 400 if clothesId is less than zero.', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     const { clothesId, ...rest } = mockedImage;
-    const response = await supertest.post('/upload')
+    const response = await request(app).post('/upload')
       .expect('Content-Type', /json/)
       .send({
         ...rest,
@@ -60,7 +60,7 @@ describe('Images Post Route', () => {
   test('Should return 400 if clothesId is not a number.', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     const { clothesId, ...rest } = mockedImage;
-    const response = await supertest.post('/upload')
+    const response = await request(app).post('/upload')
       .expect('Content-Type', /json/)
       .send({
         ...rest,
@@ -81,7 +81,7 @@ describe('Images Post Route', () => {
       } as UploadApiResponse;
     });
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
-    const response = await supertest.post('/upload')
+    const response = await request(app).post('/upload')
       .expect('Content-Type', /json/)
       .send(mockedImage);
 

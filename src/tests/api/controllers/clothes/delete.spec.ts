@@ -7,26 +7,26 @@ import request from 'supertest';
 import app from '../../../../app';
 
 describe('Clothes delete route', () => {
-  let server: Server;
-  let supertest: request.SuperAgentTest;
+  // let server: Server;
+  // let supertest: request.SuperAgentTest;
 
-  beforeAll(() => {
-    server = app.listen();
-    supertest = request.agent(server);
-  });
+  // beforeAll(() => {
+  //   server = app.listen();
+  //   supertest = request.agent(server);
+  // });
 
-  afterAll((done) => {
-    if (server) {
-      server.close(done);
-    }
-  });
+  // afterAll((done) => {
+  //   if (server) {
+  //     server.close(done);
+  //   }
+  // });
 
   test('Should call DAO delete function with correct id', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
 
     jest.spyOn(GenericDAOImp.prototype, 'delete').mockImplementationOnce((id) => id);
 
-    await supertest.delete('/clothes/1')
+    await request(app).delete('/clothes/1')
       .expect('Content-Type', /json/);
 
     const spy = jest.spyOn(dao.ClothesDAOImp.prototype, 'delete');
@@ -39,7 +39,7 @@ describe('Clothes delete route', () => {
 
     const spy = jest.spyOn(prisma.clothes, 'delete').mockImplementationOnce(jest.fn());
 
-    await supertest.delete('/clothes/1')
+    await request(app).delete('/clothes/1')
       .expect('Content-Type', /json/);
 
     expect(spy).toHaveBeenCalledWith({
@@ -54,7 +54,7 @@ describe('Clothes delete route', () => {
 
     jest.spyOn(prisma.clothes, 'delete').mockImplementationOnce(jest.fn());
 
-    const response = await supertest.delete('/clothes/aaa')
+    const response = await request(app).delete('/clothes/aaa')
       .expect('Content-Type', /json/);
 
     expect(response.statusCode).toEqual(400);
@@ -65,7 +65,7 @@ describe('Clothes delete route', () => {
 
     jest.spyOn(prisma.clothes, 'delete').mockImplementationOnce(jest.fn());
 
-    const response = await supertest.delete('/clothes/{}')
+    const response = await request(app).delete('/clothes/{}')
       .expect('Content-Type', /json/);
 
     expect(response.statusCode).toEqual(400);
@@ -76,7 +76,7 @@ describe('Clothes delete route', () => {
 
     jest.spyOn(prisma.clothes, 'delete').mockImplementationOnce(jest.fn());
 
-    const response = await supertest.delete('/clothes/1')
+    const response = await request(app).delete('/clothes/1')
       .expect('Content-Type', /json/);
 
     expect(response.statusCode).toEqual(200);

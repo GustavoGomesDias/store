@@ -7,18 +7,18 @@ import ClothesModel from '@models/IClothesModel';
 import app from '../../../../app';
 
 describe('Clothes Get By Id Route', () => {
-  let server: Server;
-  let supertest: request.SuperAgentTest;
-  beforeAll(() => {
-    server = app.listen();
-    supertest = request.agent(server);
-  });
+  // let server: Server;
+  // let supertest: request.SuperAgentTest;
+  // beforeAll(() => {
+  //   server = app.listen();
+  //   supertest = request.agent(server);
+  // });
 
-  afterAll((done) => {
-    if (server) {
-      server.close(done);
-    }
-  });
+  // afterAll((done) => {
+  //   if (server) {
+  //     server.close(done);
+  //   }
+  // });
 
   const mockedClothes: Omit<ClothesModel, 'id'> = {
     name: 'blue shirt',
@@ -33,7 +33,7 @@ describe('Clothes Get By Id Route', () => {
       return result;
     });
 
-    await supertest.get('/clothes/1')
+    await request(app).get('/clothes/1')
       .expect('Content-Type', /json/);
 
     const spy = jest.spyOn(dao.ClothesDAOImp.prototype, 'findById');
@@ -44,7 +44,7 @@ describe('Clothes Get By Id Route', () => {
   test('Should call prisma find by id function with correct contract', async () => {
     const spy = jest.spyOn(prisma.clothes, 'findUnique').mockImplementationOnce(jest.fn());
 
-    await supertest.get('/clothes/1')
+    await request(app).get('/clothes/1')
       .expect('Content-Type', /json/);
 
     expect(spy).toHaveBeenCalledWith({
@@ -57,7 +57,7 @@ describe('Clothes Get By Id Route', () => {
   test('Should return 400 if id is not a number', async () => {
     jest.spyOn(prisma.clothes, 'findUnique').mockImplementationOnce(jest.fn());
 
-    const response = await supertest.get('/clothes/aaa')
+    const response = await request(app).get('/clothes/aaa')
       .expect('Content-Type', /json/);
 
     expect(response.statusCode).toEqual(400);
@@ -66,7 +66,7 @@ describe('Clothes Get By Id Route', () => {
   test('Should return 400 if id is not exists', async () => {
     jest.spyOn(prisma.clothes, 'findUnique').mockImplementationOnce(jest.fn());
 
-    const response = await supertest.get('/clothes/{}')
+    const response = await request(app).get('/clothes/{}')
       .expect('Content-Type', /json/);
 
     expect(response.statusCode).toEqual(400);

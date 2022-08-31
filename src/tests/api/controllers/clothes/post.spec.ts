@@ -8,20 +8,20 @@ import request from 'supertest';
 import app from '../../../../app';
 
 describe('Clothes Post Route', () => {
-  let server: Server;
-  let supertest: request.SuperAgentTest;
-  beforeAll(() => {
-    server = app.listen();
+  // let server: Server;
+  // let supertest: request.SuperAgentTest;
+  // beforeAll(() => {
+  //   server = app.listen();
 
-    supertest = request.agent(server);
-  });
+  //   supertest = request.agent(server);
+  // });
 
-  afterAll((done) => {
-    if (server) {
-      Container['injectionRecord'].clear();
-      server.close(done);
-    }
-  });
+  // afterAll((done) => {
+  //   if (server) {
+  //     Container['injectionRecord'].clear();
+  //     server.close(done);
+  //   }
+  // });
 
   const mockedClothes: Omit<ClothesModel, 'id'> = {
     name: 'blue shirt',
@@ -32,7 +32,7 @@ describe('Clothes Post Route', () => {
   test('Should return 400 if name is empty', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     const { name, ...rest } = mockedClothes;
-    const response = await supertest.post('/clothes')
+    const response = await request(app).post('/clothes')
       .expect('Content-Type', /json/)
       .send({
         ...rest,
@@ -46,7 +46,7 @@ describe('Clothes Post Route', () => {
   test('Should return 400 if values is less than zero.', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     const { value, ...rest } = mockedClothes;
-    const response = await supertest.post('/clothes')
+    const response = await request(app).post('/clothes')
       .expect('Content-Type', /json/)
       .send({
         ...rest,
@@ -60,7 +60,7 @@ describe('Clothes Post Route', () => {
   test('Should return 400 if values is not a number.', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     const { value, ...rest } = mockedClothes;
-    const response = await supertest.post('/clothes')
+    const response = await request(app).post('/clothes')
       .expect('Content-Type', /json/)
       .send({
         ...rest,
@@ -74,7 +74,7 @@ describe('Clothes Post Route', () => {
   test('Should return 400 if quantity is less than zero.', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     const { quantity, ...rest } = mockedClothes;
-    const response = await supertest.post('/clothes')
+    const response = await request(app).post('/clothes')
       .expect('Content-Type', /json/)
       .send({
         ...rest,
@@ -88,7 +88,7 @@ describe('Clothes Post Route', () => {
   test('Should return 400 if quantity is not a number.', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     const { quantity, ...rest } = mockedClothes;
-    const response = await supertest.post('/clothes')
+    const response = await request(app).post('/clothes')
       .expect('Content-Type', /json/)
       .send({
         ...rest,
@@ -102,7 +102,7 @@ describe('Clothes Post Route', () => {
   test('Should return 200 if is created clothes.', async () => {
     prismaMock.clothes.create.mockImplementationOnce(jest.fn());
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
-    const response = await supertest.post('/clothes')
+    const response = await request(app).post('/clothes')
       .expect('Content-Type', /json/)
       .send(mockedClothes);
 

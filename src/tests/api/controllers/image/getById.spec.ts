@@ -7,18 +7,18 @@ import ImageModel from '@models/IImageModel';
 import app from '../../../../app';
 
 describe('Images Get By Id Route', () => {
-  let server: Server;
-  let supertest: request.SuperAgentTest;
-  beforeAll(() => {
-    server = app.listen();
-    supertest = request.agent(server);
-  });
+  // let server: Server;
+  // let supertest: request.SuperAgentTest;
+  // beforeAll(() => {
+  //   server = app.listen();
+  //   supertest = request.agent(server);
+  // });
 
-  afterAll((done) => {
-    if (server) {
-      server.close(done);
-    }
-  });
+  // afterAll((done) => {
+  //   if (server) {
+  //     server.close(done);
+  //   }
+  // });
 
   const mockedImage: Omit<ImageModel, 'id'> = {
     imageUrl: 'https://images.pexels.com/photos/8230825/pexels-photo-8230825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -32,7 +32,7 @@ describe('Images Get By Id Route', () => {
       return result;
     });
 
-    await supertest.get('/upload/1')
+    await request(app).get('/upload/1')
       .expect('Content-Type', /json/);
 
     const spy = jest.spyOn(dao.ImageDAOImp.prototype, 'findById');
@@ -43,7 +43,7 @@ describe('Images Get By Id Route', () => {
   test('Should call prisma find by id function with correct contract', async () => {
     const spy = jest.spyOn(prisma.images, 'findUnique').mockImplementationOnce(jest.fn());
 
-    await supertest.get('/upload/1')
+    await request(app).get('/upload/1')
       .expect('Content-Type', /json/);
 
     expect(spy).toHaveBeenCalledWith({
@@ -56,7 +56,7 @@ describe('Images Get By Id Route', () => {
   test('Should return 400 if id is not a number', async () => {
     jest.spyOn(prisma.images, 'findUnique').mockImplementationOnce(jest.fn());
 
-    const response = await supertest.get('/upload/aaa')
+    const response = await request(app).get('/upload/aaa')
       .expect('Content-Type', /json/);
 
     expect(response.statusCode).toEqual(400);
@@ -65,7 +65,7 @@ describe('Images Get By Id Route', () => {
   test('Should return 400 if id is not exists', async () => {
     jest.spyOn(prisma.images, 'findUnique').mockImplementationOnce(jest.fn());
 
-    const response = await supertest.get('/upload/{}')
+    const response = await request(app).get('/upload/{}')
       .expect('Content-Type', /json/);
 
     expect(response.statusCode).toEqual(400);
