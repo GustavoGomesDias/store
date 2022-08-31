@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { IApiRouterDefinition } from '@global/IApi';
+import { IApiRouterDefinition } from 'src/api/global/IApi';
 
 /**
  * @param path The path for get route
