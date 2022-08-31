@@ -9,20 +9,20 @@ import ImageDAOImp from '@db/DAO/imp/image/ImageDAOImp';
 import app from '../../../../app';
 
 describe('Images Put Route', () => {
-  let server: Server;
-  let supertest: request.SuperAgentTest;
-  beforeAll(() => {
-    server = app.listen(4949);
+  // let server: Server;
+  // let supertest: request.SuperAgentTest;
+  // beforeAll(() => {
+  //   server = app.listen();
 
-    supertest = request.agent(server);
-  });
+  //   supertest = request.agent(server);
+  // });
 
-  afterAll(() => {
-    if (server) {
-      Container['injectionRecord'].clear();
-      server.close();
-    }
-  });
+  // afterAll((done) => {
+  //   if (server) {
+  //     Container['injectionRecord'].clear();
+  //     server.close(done);
+  //   }
+  // });
 
   const mockedImage: AddImages = {
     clothesId: 1,
@@ -32,7 +32,7 @@ describe('Images Put Route', () => {
   test('Should return 400 if image is empty', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     const { image, ...rest } = mockedImage;
-    const response = await supertest.put('/upload')
+    const response = await request(app).put('/upload')
       .expect('Content-Type', /json/)
       .send({
         ...rest,
@@ -46,7 +46,7 @@ describe('Images Put Route', () => {
   test('Should return 400 if clothesId is less than zero.', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     const { clothesId, ...rest } = mockedImage;
-    const response = await supertest.put('/upload')
+    const response = await request(app).put('/upload')
       .expect('Content-Type', /json/)
       .send({
         ...rest,
@@ -60,7 +60,7 @@ describe('Images Put Route', () => {
   test('Should return 400 if clothesId is not a number.', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     const { clothesId, ...rest } = mockedImage;
-    const response = await supertest.put('/upload')
+    const response = await request(app).put('/upload')
       .expect('Content-Type', /json/)
       .send({
         ...rest,
@@ -83,7 +83,7 @@ describe('Images Put Route', () => {
 
     jest.spyOn(ImageDAOImp.prototype, 'updateImage').mockImplementationOnce(jest.fn());
 
-    const response = await supertest.put('/upload')
+    const response = await request(app).put('/upload')
       .expect('Content-Type', /json/)
       .send(mockedImage);
 
@@ -101,7 +101,7 @@ describe('Images Put Route', () => {
     jest.spyOn(ImageDAOImp.prototype, 'updateImage').mockImplementationOnce(jest.fn());
 
     const { clothesId, image } = mockedImage;
-    const response = await supertest.put('/upload')
+    const response = await request(app).put('/upload')
       .expect('Content-Type', /json/)
       .send({
         image: 'https://www.google.com',

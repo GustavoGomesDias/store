@@ -8,20 +8,20 @@ import request from 'supertest';
 import app from '../../../../app';
 
 describe('Clothes Put Route', () => {
-  let server: Server;
-  let supertest: request.SuperAgentTest;
-  beforeAll(() => {
-    server = app.listen(4002);
+  // let server: Server;
+  // let supertest: request.SuperAgentTest;
+  // beforeAll(() => {
+  //   server = app.listen();
 
-    supertest = request.agent(server);
-  });
+  //   supertest = request.agent(server);
+  // });
 
-  afterAll(() => {
-    if (server) {
-      Container['injectionRecord'].clear();
-      server.close();
-    }
-  });
+  // afterAll((done) => {
+  //   if (server) {
+  //     Container['injectionRecord'].clear();
+  //     server.close(done);
+  //   }
+  // });
 
   const mockedClothes: Omit<ClothesModel, 'id'> = {
     name: 'blue shirt',
@@ -32,7 +32,7 @@ describe('Clothes Put Route', () => {
   test('Should return an error for empty body', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     prismaMock.clothes.update.mockImplementationOnce(jest.fn());
-    const response = await supertest.put('/clothes')
+    const response = await request(app).put('/clothes')
       .expect('Content-Type', /json/)
       .send({});
 
@@ -42,7 +42,7 @@ describe('Clothes Put Route', () => {
   test('Should return an error if property body is empty', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     prismaMock.clothes.update.mockImplementationOnce(jest.fn());
-    const response = await supertest.put('/clothes')
+    const response = await request(app).put('/clothes')
       .expect('Content-Type', /json/)
       .send({
         name: '',
@@ -54,7 +54,7 @@ describe('Clothes Put Route', () => {
   test('Should return an error if property body is empty array', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     prismaMock.clothes.update.mockImplementationOnce(jest.fn());
-    const response = await supertest.put('/clothes')
+    const response = await request(app).put('/clothes')
       .expect('Content-Type', /json/)
       .send({
         value: 1,
@@ -67,7 +67,7 @@ describe('Clothes Put Route', () => {
   test('Should return an error if property body is empty object', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     prismaMock.clothes.update.mockImplementationOnce(jest.fn());
-    const response = await supertest.put('/clothes')
+    const response = await request(app).put('/clothes')
       .expect('Content-Type', /json/)
       .send({
         name: {},
@@ -79,7 +79,7 @@ describe('Clothes Put Route', () => {
   test('Should not return an error for partial clothes infos', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
     prismaMock.clothes.update.mockImplementationOnce(jest.fn());
-    const response = await supertest.put('/clothes')
+    const response = await request(app).put('/clothes')
       .expect('Content-Type', /json/)
       .send({
         name: mockedClothes.name,

@@ -4,6 +4,7 @@
   "description": "Em breve!",
   "main": "index.js",
   "scripts": {
+    "test-rib": "jest --runInBand",
     "test": "jest",
     "build": "tsc && tsc-alias",
     "start": "node dist/server.js",
