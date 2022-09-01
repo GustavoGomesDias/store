@@ -29,7 +29,7 @@
     // "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
     "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     "paths": {
-      "@global/*": ["src/global/*"],
+      "@global/*": ["src/api/global/*"],
       "@db/*": ["src/db/*"],
       "@DAO/*": ["src/db/DAO/generic/*"],
       "@DAOImp/*": ["src/db/DAO/imp/*"],
@@ -37,17 +37,17 @@
       "@data/*": ["src/services/data/*"],
       "@infra/*": ["src/db/infra/*"],
       "@mocks/*": ["src/tests/mocks/*"],
-      "@adapters/*": ["src/adapters/*"],
+      "@adapters/*": ["src/services/adapters/*"],
       "@services/*": ["src/services/*"],
       "@err/*": ["src/helpers/errors/*"],
       "@http/*": ["src/helpers/http/*"],
       "@helpers/*": ["src/helpers/*"],
-      "@api/*": ["src/api/decorators/handlers/routes/*"],
-      "@handleError/*": ["src/api/decorators/handlers/errors/*"],
+      "@api/*": ["src/api/helpers/handlers/routes/*"],
+      "@handleError/*": ["src/api/helpers/handlers/errors/*"],
       "@inject/*": ["src/dependency-control/decorators/*"],
       "@DI/*": ["src/dependency-control/*"],
       "@controllers/*": ["src/api/controllers/*"],
-      "@validaions/*": ["src/api/decorators/validations/*"],
+      "@validations/*": ["src/api/helpers/validations/*"],
       "@dtos/*": ["src/api/dtos/*"],
       "@middlewares/*": ["src/api/middlewares/*"]
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */

@@ -2,25 +2,10 @@ import dao from '@DAOImp/index';
 import GenericDAOImp from '@db/DAO/generic/prisma/PrismaGenericDAOImp';
 import prisma from '@db/infra/PrismaConnection';
 import Auth from '@middlewares/Auth';
-import { Server } from 'http';
 import request from 'supertest';
 import app from '../../../../app';
 
 describe('Image delete route', () => {
-  // let server: Server;
-  // let supertest: request.SuperAgentTest;
-
-  // beforeAll(() => {
-  //   server = app.listen();
-  //   supertest = request.agent(server);
-  // });
-
-  // afterAll((done) => {
-  //   if (server) {
-  //     server.close(done);
-  //   }
-  // });
-
   test('Should call DAO delete function with correct id', async () => {
     jest.spyOn(Auth.prototype, 'authentitcated').mockImplementationOnce(jest.fn());
 

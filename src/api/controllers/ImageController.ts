@@ -1,5 +1,5 @@
 /* eslint-disable no-new */
-import ImageStore from '@adapters/services/ImageStore';
+import ImageStore from '@services/adapters/services/ImageStore';
 import {
   AuthRequired, Delete, Get, Post, Put, Route,
 } from '@api/index';
@@ -12,7 +12,7 @@ import { validateUrl } from '@helpers/validations';
 import { IResponse } from '@http/IReponse';
 import { IRequest } from '@http/IRequest';
 import { Inject } from '@inject/Inject';
-import { IsValidNumberParams } from '@validaions/index';
+import { IsValidNumberParams } from '@validations/index';
 import Controller from './Controller';
 
 @Route('/upload')

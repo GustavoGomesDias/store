@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-catch */
 import { BadRequestErr } from '@err/BadRequestError';
-import * as validations from '@validaions/index';
+import * as validations from '@validations/index';
 
 describe('@validations - Validate value', () => {
   class TestDTOStub {

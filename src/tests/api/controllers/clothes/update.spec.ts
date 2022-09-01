@@ -1,28 +1,11 @@
 /* eslint-disable dot-notation */
 import ClothesModel from '@db/models/IClothesModel';
-import Container from '@DI/Container';
 import Auth from '@middlewares/Auth';
 import prismaMock from '@mocks/DAO/prismaMock';
-import { Server } from 'http';
 import request from 'supertest';
 import app from '../../../../app';
 
 describe('Clothes Put Route', () => {
-  // let server: Server;
-  // let supertest: request.SuperAgentTest;
-  // beforeAll(() => {
-  //   server = app.listen();
-
-  //   supertest = request.agent(server);
-  // });
-
-  // afterAll((done) => {
-  //   if (server) {
-  //     Container['injectionRecord'].clear();
-  //     server.close(done);
-  //   }
-  // });
-
   const mockedClothes: Omit<ClothesModel, 'id'> = {
     name: 'blue shirt',
     quantity: 3,

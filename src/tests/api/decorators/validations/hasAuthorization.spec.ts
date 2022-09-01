@@ -2,7 +2,7 @@
 import { UnauthorizedError } from '@err/UnauthorizedError';
 import { IResponse } from '@http/IReponse';
 import { IRequest } from '@http/IRequest';
-import HasAuthorization from '@validaions/HasAuthorization';
+import HasAuthorization from '@validations/HasAuthorization';
 
 describe('@validations - Authorization tests', () => {
   class ApiEndPointStub {

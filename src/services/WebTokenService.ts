@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import WebToken from '@adapters/services/WebToken';
+import WebToken from '@services/adapters/services/WebToken';
 import UserModel from '@db/models/IUserModel';
 import { UnauthorizedError } from '@err/UnauthorizedError';
 

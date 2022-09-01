@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import WebTokenService from '@services/WebTokenService';
-import WebToken from '@adapters/services/WebToken';
+import WebToken from '@services/adapters/services/WebToken';
 import { UnauthorizedError } from '@err/UnauthorizedError';
 
 jest.mock('jsonwebtoken', () => ({

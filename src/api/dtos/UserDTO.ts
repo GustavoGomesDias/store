@@ -1,7 +1,5 @@
 import UserModel from '@models/IUserModel';
-import { IsEmail } from '@validaions/IsEmail';
-import { Min } from '@validaions/Min';
-import { NotEmpty } from '@validaions/NotEmpty';
+import { IsEmail, Min, NotEmpty } from '../helpers/validations/index';
 
 export default class UserDTO implements Omit<UserModel, 'id'> {
   @NotEmpty('Nome')

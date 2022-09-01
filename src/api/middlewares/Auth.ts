@@ -1,4 +1,4 @@
-import WebToken from '@adapters/services/WebToken';
+import WebToken from '@services/adapters/services/WebToken';
 import GenericDAO from '@db/DAO/generic/prisma/IGenericDAO';
 import { UnauthorizedError } from '@err/UnauthorizedError';
 import { IRequest } from '@http/index';
