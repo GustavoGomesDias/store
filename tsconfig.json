@@ -37,7 +37,7 @@
       "@data/*": ["src/services/data/*"],
       "@infra/*": ["src/db/infra/*"],
       "@mocks/*": ["src/tests/mocks/*"],
-      "@adapters/*": ["src/adapters/*"],
+      "@adapters/*": ["src/services/adapters/*"],
       "@services/*": ["src/services/*"],
       "@err/*": ["src/helpers/errors/*"],
       "@http/*": ["src/helpers/http/*"],

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import Encrypt from '@adapters/services/Encrypt';
+import Encrypt from '@services/adapters/services/Encrypt';
 
 const makeEncrypterStub = (): Encrypt => {
   class EncrypterStub implements Encrypt {

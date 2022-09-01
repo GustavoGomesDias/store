@@ -1,4 +1,4 @@
-import Encrypt from '@adapters/services/Encrypt';
+import Encrypt from '@services/adapters/services/Encrypt';
 import GenericDAOImp from '@DAO/prisma/PrismaGenericDAOImp';
 import IUserModel from '@db/models/IUserModel';
 import { AddUser, GetUserWithOutPass } from '@db/usecases/user';

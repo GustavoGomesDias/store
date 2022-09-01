@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import Encrypt from '@adapters/services/Encrypt';
+import Encrypt from '@services/adapters/services/Encrypt';
 
 export default class BcryptService implements Encrypt {
   async compare(password: string, passHashed: string): Promise<boolean> {

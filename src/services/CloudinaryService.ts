@@ -1,4 +1,4 @@
-import ImageStore from '@adapters/services/ImageStore';
+import ImageStore from '@services/adapters/services/ImageStore';
 import { v2 as cloudinary } from 'cloudinary';
 
 cloudinary.config({

@@ -1,4 +1,4 @@
-import Encrypt from '@adapters/services/Encrypt';
+import Encrypt from '@services/adapters/services/Encrypt';
 import bcrypt from 'bcrypt';
 import BcryptService from '@services/BcryptService';
 

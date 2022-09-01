@@ -1,5 +1,5 @@
 /* eslint-disable no-new */
-import ImageStore from '@adapters/services/ImageStore';
+import ImageStore from '@services/adapters/services/ImageStore';
 import {
   AuthRequired, Delete, Get, Post, Put, Route,
 } from '@api/index';
