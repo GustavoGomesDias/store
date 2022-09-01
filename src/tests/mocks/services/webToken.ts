@@ -1,4 +1,4 @@
-import WebToken from '@adapters/services/WebToken';
+import WebToken from '@services/adapters/services/WebToken';
 import IUserModel from '@db/models/IUserModel';
 
 export const makeWebTokenStub = (): WebToken => {

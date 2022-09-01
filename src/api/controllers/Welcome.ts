@@ -1,5 +1,4 @@
-import { Get } from '@api/Get';
-import { Route } from '@api/Route';
+import { Get, Route } from '@api/index';
 import { IResponse } from '@http/IReponse';
 import { IRequest } from '@http/IRequest';
 

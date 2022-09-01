@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import Encrypt from '@adapters/services/Encrypt';
+import Encrypt from '@services/adapters/services/Encrypt';
 import * as dependency from '@inject/Inject';
 import * as factory from '@mocks/DI/factory';
 import { DependencyError } from '@err/DependencyError';

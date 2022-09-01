@@ -1,25 +1,11 @@
 import GenericDAOImp from '@db/DAO/generic/prisma/PrismaGenericDAOImp';
 import prisma from '@db/infra/PrismaConnection';
-import { Server } from 'http';
 import request from 'supertest';
 import dao from '@DAOImp/index';
 import ClothesModel from '@models/IClothesModel';
 import app from '../../../../app';
 
 describe('Clothes Get By Id Route', () => {
-  // let server: Server;
-  // let supertest: request.SuperAgentTest;
-  // beforeAll(() => {
-  //   server = app.listen();
-  //   supertest = request.agent(server);
-  // });
-
-  // afterAll((done) => {
-  //   if (server) {
-  //     server.close(done);
-  //   }
-  // });
-
   const mockedClothes: Omit<ClothesModel, 'id'> = {
     name: 'blue shirt',
     quantity: 3,

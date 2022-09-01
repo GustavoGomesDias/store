@@ -2,7 +2,7 @@
 /* eslint-disable no-useless-catch */
 import { BadRequestErr } from '@err/BadRequestError';
 import { IRequest } from '@http/IRequest';
-import * as validations from '@validaions/index';
+import * as validations from '@validations/index';
 
 describe('@validations - Testing request body', () => {
   class TestRequestStub {

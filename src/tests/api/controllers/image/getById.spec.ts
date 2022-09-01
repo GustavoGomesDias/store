@@ -1,25 +1,11 @@
 import GenericDAOImp from '@db/DAO/generic/prisma/PrismaGenericDAOImp';
 import prisma from '@db/infra/PrismaConnection';
-import { Server } from 'http';
 import request from 'supertest';
 import dao from '@DAOImp/index';
 import ImageModel from '@models/IImageModel';
 import app from '../../../../app';
 
 describe('Images Get By Id Route', () => {
-  // let server: Server;
-  // let supertest: request.SuperAgentTest;
-  // beforeAll(() => {
-  //   server = app.listen();
-  //   supertest = request.agent(server);
-  // });
-
-  // afterAll((done) => {
-  //   if (server) {
-  //     server.close(done);
-  //   }
-  // });
-
   const mockedImage: Omit<ImageModel, 'id'> = {
     imageUrl: 'https://images.pexels.com/photos/8230825/pexels-photo-8230825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     clothesId: 1,

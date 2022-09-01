@@ -1,5 +1,5 @@
 import ClothesModel from '@db/models/IClothesModel';
-import { IsValidValue, LengthGreaterThanZero, Min } from '@validaions/index';
+import { IsValidValue, LengthGreaterThanZero, Min } from '../helpers/validations/index';
 
 export default class ClothesDTO implements Omit<ClothesModel, 'id'> {
   @Min(8, 'Nome da roupa')

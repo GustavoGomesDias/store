@@ -8,8 +8,8 @@ import { Inject } from '@inject/index';
 import Catch from '@handleError/Catch';
 import ClothesDTO from '@dtos/ClotesDTO';
 import IClothesDAO from '@db/DAO/imp/clothes/IClothesDAO';
-import { NotEmptyRequestBody } from '@validaions/NotEmptyRequestBody';
-import { IsValidNumberParams } from '@validaions/IsValidNumberParams';
+import { NotEmptyRequestBody } from '@validations/NotEmptyRequestBody';
+import { IsValidNumberParams } from '@validations/IsValidNumberParams';
 import Controller from './Controller';
 
 @Route('/clothes')
