@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test-rib": "jest --runInBand",
+    "t": "npm run build && jest -w 1",
     "test": "jest",
     "build": "tsc && tsc-alias",
     "start": "node dist/server.js",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/GustavoGomesDias/store#readme",
   "dependencies": {
+    "@jest/reporters": "^29.0.2",
     "@prisma/client": "^4.1.0",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/mongodb": "^4.0.7",
