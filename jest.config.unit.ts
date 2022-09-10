@@ -154,7 +154,7 @@ export default {
   // projects: undefined,
 
   // Use this configuration option to add custom reporters to Jest
-  reporters: ['default', '<rootDir>/dist/src/helpers/report/test-tracker.js'],
+  // reporters: ['default', '<rootDir>/dist/src/helpers/report/test-tracker.js'],
 
   // Automatically reset mock state before every test
   // resetMocks: false,
