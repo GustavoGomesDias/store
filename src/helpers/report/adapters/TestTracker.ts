@@ -23,7 +23,7 @@ export default interface TestReporterAdapter {
   _shouldFail: any;
   slowTests: Array<TestFields>;
 
-  onRunComplete(): void
+  onRunComplete(): Promise<void>
   onTestResult(test: unknown, testResult: TestResults): void
   slowTestTime(slowestTests: TestFields[]): number
   allTestTime(): number
