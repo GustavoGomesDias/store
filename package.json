@@ -6,7 +6,7 @@
   "scripts": {
     "test-rib": "jest --runInBand",
     "t": "npm run build && jest -w 1",
-    "test": "jest",
+    "test": "npm run build && jest",
     "build": "tsc && tsc-alias",
     "start": "node dist/server.js",
     "create-db": "npx prisma migrate deploy",
