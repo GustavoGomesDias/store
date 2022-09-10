@@ -1,11 +1,9 @@
 /* eslint-disable dot-notation */
-import request from 'supertest';
 import Auth from '@middlewares/Auth';
 import userMock from '@mocks/DAO/userMock';
 import factory from '@mocks/DI/factory';
 import { makeWebTokenStub } from '@mocks/services/webToken';
 import { UnauthorizedError } from '@err/UnauthorizedError';
-import UserDAOImp from '@db/DAO/imp/user/UserDAOImp';
 
 describe('Middleware - Auth', () => {
   beforeAll(() => jest.clearAllMocks());

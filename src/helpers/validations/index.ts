@@ -50,3 +50,9 @@ export const validateBase64Image = (image: string) => {
 
   return validation.test(base64Info);
 };
+
+export const validateMail = (email: string): boolean => {
+  const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+  return regex.test(email);
+};
