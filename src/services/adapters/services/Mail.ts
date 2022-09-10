@@ -2,8 +2,11 @@
 /* eslint-disable semi */
 export type TransporterConfig = {
   host: string
-  port: number
+  port?: number
   secure?: boolean
+  tls?: {
+    ciphers: string
+  }
   auth: {
     user: string
     pass: string
