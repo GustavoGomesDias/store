@@ -43,6 +43,7 @@ export default {
     '!**/mocks/**',
     '!**/global/**',
     '!**/http/**',
+    '!**/test-tracker.ts',
   ],
 
   // The directory where Jest should output its coverage files
