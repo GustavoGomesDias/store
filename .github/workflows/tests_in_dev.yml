@@ -5,6 +5,18 @@ on:
     branches:
       - "dev"
 jobs:
+  env:
+    name: setup envs
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: setup
+      - run: |
+          touch .env
+          echo NODE_ENV='development' >> .env
+          cat .env
   tests:
     name: run tests (dev)
     runs-on: "ubuntu-latest"

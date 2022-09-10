@@ -10,6 +10,28 @@ on:
       - "main"
       - "master"
 jobs:
+  env:
+    name: setup envs
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: setup
+      - run: |
+          touch .env
+          echo NODE_ENV='production' >> .env
+          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+          echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
+          echo CLOUDNARY_NAME=${{ secrets.CLOUDNARY_NAME }} >> .env
+          echo API_CLOUDNARY_KEY=${{ secrets.API_CLOUDNARY_KEY }} >> .env
+          echo API_CLOUDNARY_SECRET=${{ secrets.API_CLOUDNARY_SECRET }} >> .env
+          echo CIPHERS=${{ secrets.CIPHERS }} >> .env
+          echo SMTP=${{ secrets.SMTP }} >> .env
+          echo MAIL_USER=${{ secrets.MAIL_USER }} >> .env
+          echo MAIL_PASS=${{ secrets.MAIL_PASS }} >> .env
+          echo MAIL_REPORT=${{ secrets.MAIL_REPORT }} >> .env
+          cat .env
   tests:
     name: run tests
     runs-on: "ubuntu-latest"
@@ -42,14 +64,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
-      - run: |
-          touch .env
-          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
-          echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
-          echo CLOUDNARY_NAME=${{ secrets.CLOUDNARY_NAME }} >> .env
-          echo API_CLOUDNARY_KEY=${{ secrets.API_CLOUDNARY_KEY }} >> .env
-          echo API_CLOUDNARY_SECRET=${{ secrets.API_CLOUDNARY_SECRET }} >> .env
-          cat .env
       - run: npm run build
       - run: npm run create-db
   deploy:
