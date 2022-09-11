@@ -24,6 +24,7 @@ jobs:
           echo NODE_ENV='development' >> .env
           cat .env
   tests:
+    needs: env
     name: run tests (dev)
     runs-on: "ubuntu-latest"
     strategy:
