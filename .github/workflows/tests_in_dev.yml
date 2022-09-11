@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - "dev"
+env:
+  NODE_ENV: development
+
 jobs:
   tests:
     name: run tests (dev)
@@ -18,10 +21,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - name: setup envs
-        run: |
-          touch .env
-          echo NODE_ENV=development >> .env
-          cat .env
       - name: Run unit tests
         run: npm ci && npm test
