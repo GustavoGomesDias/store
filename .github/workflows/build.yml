@@ -11,7 +11,6 @@ on:
       - "master"
 jobs:
   tests:
-    needs: env
     name: run tests
     runs-on: "ubuntu-latest"
     strategy:
