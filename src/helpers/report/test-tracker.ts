@@ -41,23 +41,21 @@ export default class CustomReporter implements TestReporterAdapter {
       reportReturn += `<p>${duration / 1000} segundos ${filePath} (${filePath.includes('test.ts') ? 'integração' : 'unitário'})<p><br />`;
     }
 
-    if (process.env.NODE_ENV === 'production') {
-      const mail = new NodeMailerService({
-        host: process.env.SMTP as string,
-        auth: {
-          user: process.env.MAIL_USER as string,
-          pass: process.env.MAIL_PASS as string,
-        },
-      });
+    const mail = new NodeMailerService({
+      host: process.env.SMTP as string,
+      auth: {
+        user: process.env.MAIL_USER as string,
+        pass: process.env.MAIL_PASS as string,
+      },
+    });
 
-      await mail.sendMail({
-        from: `"Email Dev" <${process.env.MAIL_USER}>`, // sender address
-        to: process.env.MAIL_REPORT as string, // list of receivers
-        subject: 'Test Reporter', // Subject line
-        text: '', // plain text body
-        html: reportReturn, // html body
-      });
-    }
+    await mail.sendMail({
+      from: `"Email Dev" <${process.env.MAIL_USER}>`, // sender address
+      to: process.env.MAIL_REPORT as string, // list of receivers
+      subject: 'Test Reporter', // Subject line
+      text: '', // plain text body
+      html: reportReturn, // html body
+    });
   }
 
   onTestResult(est: unknown, testResult: TestResults) {
