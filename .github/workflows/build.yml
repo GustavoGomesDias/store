@@ -9,20 +9,6 @@ on:
     branches:
       - "main"
       - "master"
-
-env:
-  NODE_ENV: 'production'
-  CIPHERS: ${{ secrets.CIPHERS }}
-  SMTP: ${{ secrets.SMTP }}
-  MAIL_USER: ${{ secrets.MAIL_USER }}
-  MAIL_PASS: ${{ secrets.MAIL_PASS }}
-  MAIL_REPORT: ${{ secrets.MAIL_REPORT }}
-  DATABASE_URL: ${{ secrets.DATABASE_URL }}
-  JWT_SECRET: ${{ secrets.JWT_SECRET }}
-  CLOUDNARY_NAME: ${{ secrets.CLOUDNARY_NAME }}
-  API_CLOUDNARY_KEY: ${{ secrets.API_CLOUDNARY_KEY }}
-  API_CLOUDNARY_SECRET: ${{ secrets.API_CLOUDNARY_SECRET }}
-
 jobs:
   tests:
     name: run tests
@@ -37,12 +23,22 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+      - name: setup envs
+        run: |
+          touch .env
+          echo NODE_ENV='production' >> .env
+          echo CIPHERS=${{ secrets.CIPHERS }} >> .env
+          echo SMTP=${{ secrets.SMTP }} >> .env
+          echo MAIL_USER=${{ secrets.MAIL_USER }} >> .env
+          echo MAIL_PASS=${{ secrets.MAIL_PASS }} >> .env
+          echo MAIL_REPORT=${{ secrets.MAIL_REPORT }} >> .env
+          cat .env
       - name: Run unit tests
-        run: npm i && npm test
+        run: npm ci && npm test
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
   build:
-    needs: tests
+    needs: [tests]
     name: run build
     runs-on: "ubuntu-latest"
     strategy:
@@ -55,6 +51,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+      - run: |
+          touch .env
+          echo NODE_ENV='production' >> .env
+          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+          echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
+          echo CLOUDNARY_NAME=${{ secrets.CLOUDNARY_NAME }} >> .env
+          echo API_CLOUDNARY_KEY=${{ secrets.API_CLOUDNARY_KEY }} >> .env
+          echo API_CLOUDNARY_SECRET=${{ secrets.API_CLOUDNARY_SECRET }} >> .env
+          cat .env
       - run: npm ci
       - run: npm run build
       - run: npm run create-db
