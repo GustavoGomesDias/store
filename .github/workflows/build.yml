@@ -37,9 +37,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci
       - name: Run unit tests
-        run: npm test
+        run: npm i && npm test
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
   build:
