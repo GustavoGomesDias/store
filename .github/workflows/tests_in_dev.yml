@@ -5,7 +5,7 @@ on:
     branches:
       - "dev"
 env:
-  NODE_ENV: 'development'
+  NODE_ENV: development
 
 jobs:
   tests:
