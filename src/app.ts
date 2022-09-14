@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import express, { Express, Router } from 'express';
-import { IApiRouterDefinition } from 'src/api/global/IApi';
+import { IApiRouterDefinition } from '@global/IApi';
 import { IResponse } from '@http/IReponse';
 import { MakeDependencies } from '@inject/index';
 import controllers from './api/controllers';
