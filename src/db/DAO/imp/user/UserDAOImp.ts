@@ -1,7 +1,7 @@
 import Encrypt from '@services/adapters/services/Encrypt';
 import GenericDAOImp from '@DAO/prisma/PrismaGenericDAOImp';
 import IUserModel from '@db/models/IUserModel';
-import { AddUser, GetUserWithOutPass } from '@db/usecases/user';
+import { AddUser, GetUserWithOutPass, UpdateUser } from '@db/usecases/user';
 import prisma from '@infra/PrismaConnection';
 import { Inject } from '@inject/index';
 import { Prisma } from '@prisma/client';
@@ -44,6 +44,20 @@ AddUser,
     await this.add({
       ...rest,
       password: hash,
+    });
+  }
+
+  async updateUser(infos: UpdateUser) {
+    const { id, ...rest } = infos;
+
+    await this.update({
+      where: {
+        id,
+      },
+
+      data: {
+        ...rest,
+      },
     });
   }
 }
