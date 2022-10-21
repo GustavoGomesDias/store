@@ -126,4 +126,25 @@ describe('User DAO Implementation tests', () => {
       expect((err as Error).message).toEqual('Not possible injecting: Encrypter');
     }
   });
+
+  test('Should call updateClothes function with correct values', async () => {
+    const dao = makeDAOImp();
+
+    // eslint-disable-next-line dot-notation
+    const spy = jest.spyOn(dao['entity'], 'update').mockImplementationOnce(jest.fn());
+
+    const { password, ...rest } = user;
+
+    await dao.updateUser({ id: 1, ...rest });
+
+    expect(spy).toHaveBeenCalledWith({
+      where: {
+        id: 1,
+      },
+
+      data: {
+        ...rest,
+      },
+    });
+  });
 });
