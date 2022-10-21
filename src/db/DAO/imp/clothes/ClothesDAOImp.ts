@@ -20,7 +20,16 @@ export default class ClothesDAOImp extends GenericDAOImp<
     super(prisma.clothes);
   }
 
-  async updateClothes(data: Partial<IClothesModel>): Promise<void> {
-    throw new Error('Method not implemented.');
+  async updateClothes(updateInfos: IClothesModel): Promise<void> {
+    const { id, ...rest } = updateInfos;
+    await this.update({
+      where: {
+        id: id as number,
+      },
+
+      data: {
+        ...rest,
+      },
+    });
   }
 }
