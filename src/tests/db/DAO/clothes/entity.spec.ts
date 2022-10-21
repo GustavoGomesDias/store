@@ -3,7 +3,7 @@ import IClothesModel from '@models/IClothesModel';
 
 const makeDAOImp = (): ClothesDAOImp => new ClothesDAOImp();
 
-describe('Clothes DAO Implementation tests', () => {
+describe('Clothes DAO Entity Implementation tests', () => {
   const clothes: Omit<IClothesModel, 'id'> = {
     name: 'Blue shirt',
     quantity: 2,
